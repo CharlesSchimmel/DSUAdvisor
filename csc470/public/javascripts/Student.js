@@ -1,16 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Id = require("./Id");
 var Student = (function () {
     function Student(firstName, lastName, userName, password) {
         this._firstName = firstName;
         this._lastName = lastName;
         this._userName = userName;
         this._password = password;
-        this._userId = this.genUniqueId();
+        this._userId = Id.genUniqueId();
     }
-    Student.prototype.genUniqueId = function () {
-        //could cause repeates if called more than once in same millisecound
-        var x = new Date().getTime();
-        return x;
-    };
     return Student;
 }());
 //# sourceMappingURL=Student.js.map

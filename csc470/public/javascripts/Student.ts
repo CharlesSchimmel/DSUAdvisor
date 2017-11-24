@@ -1,4 +1,6 @@
-﻿class Student {
+﻿import Id = require('./Id');
+
+class Student {
     private _userId: number;
     private _firstName: string;
     private _lastName: string;
@@ -13,12 +15,6 @@
         this._lastName = lastName;
         this._userName = userName;
         this._password = password;
-        this._userId = this.genUniqueId();
-    }
-
-    genUniqueId() {
-        //could cause repeates if called more than once in same millisecound
-        var x = new Date().getTime();
-        return x;
+        this._userId = Id.genUniqueId();
     }
 }
