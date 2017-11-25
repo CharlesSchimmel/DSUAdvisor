@@ -1,9 +1,20 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var courses;
 (function (courses) {
-    var Course = (function () {
-        function Course() {
+    var Course = /** @class */ (function () {
+        function Course(name, courseNumber, creditHours, subject, description) {
+            this._classId;
+            number;
+            this._name;
+            string;
+            this._courseNumber;
+            string;
+            this._creditHours;
+            number;
+            this._subject;
+            this._description;
+            string;
         }
         return Course;
     }());
@@ -25,4 +36,3 @@ var courses;
         Semester[Semester["SUMMER"] = 2] = "SUMMER";
     })(Semester || (Semester = {}));
 })(courses || (courses = {}));
-//# sourceMappingURL=Course.js.map
