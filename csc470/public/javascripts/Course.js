@@ -1,4 +1,5 @@
 "use strict";
+<<<<<<< HEAD
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -16,6 +17,24 @@ var courses;
     var MAXYEAR = 2040;
     var Course = (function () {
         function Course() {
+=======
+exports.__esModule = true;
+var courses;
+(function (courses) {
+    var Course = /** @class */ (function () {
+        function Course(name, courseNumber, creditHours, subject, description) {
+            this._classId;
+            number;
+            this._name;
+            string;
+            this._courseNumber;
+            string;
+            this._creditHours;
+            number;
+            this._subject;
+            this._description;
+            string;
+>>>>>>> 55efec263796091528732842ce3518a1495f93ae
         }
         //--------
         Course.prototype.getClassId = function () {
@@ -113,4 +132,3 @@ var courses;
         Semester[Semester["SUMMER"] = 2] = "SUMMER";
     })(Semester || (Semester = {}));
 })(courses || (courses = {}));
-//# sourceMappingURL=Course.js.map

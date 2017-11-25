@@ -4,7 +4,7 @@ namespace degrees {
     class Degrees {
         private _degreeId: number;
         private _name: string;
-        private _college;
+        private _college: College;
         private _description: string;
         private _length: number;
         private _requiredClasses: Array<number>;
@@ -19,7 +19,7 @@ namespace degrees {
         }
     }
 
-    enum Subject {
+    enum College {
     Engineering,
     Science,
     LiberalArts
