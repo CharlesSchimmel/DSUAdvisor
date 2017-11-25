@@ -1,10 +1,10 @@
 ﻿import Id = require('./Id');
 
-namespace courses {
+
     const MINYEAR = 2000;
     const MAXYEAR = 2040;
 
-    class Course {
+    export class Course {
         private _classId: number;
         private _name: string;
         private _courseNumber: string;
@@ -70,7 +70,7 @@ namespace courses {
         }
     }
 
-    class CourseInstance extends Course {
+    export class CourseInstance extends Course {
         private _professor: string;
         private _semester: Semester;
         private _year: number;
@@ -105,7 +105,7 @@ namespace courses {
 
     }
 
-    enum Subject {
+    export enum Subject {
         ENG,
         CSC,
         EE,
@@ -116,9 +116,8 @@ namespace courses {
         CENG,
     }
 
-    enum Semester {
+    export enum Semester {
         FALL,
         SPRING,
         SUMMER,
     }
-}

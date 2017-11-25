@@ -4,7 +4,7 @@ class Student {
     private _userId: number;
     private _firstName: string;
     private _lastName: string;
-    private _major;
+    private _major: number;
 
     private _progLength: number;
     private _userName: string;
