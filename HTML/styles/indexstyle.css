@@ -1,0 +1,44 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+h1, h2, p {
+	text-align: center;
+}
+.name p{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button {
+    background-color: #d4d4f7;
+    text-align: center;
+    font-size: 16px;
+	display: block;
+    cursor: pointer;
+	height: 100%;
+	width: 100%;
+}
+.topcolumns {
+	background-color:lavender;
+	height: 10vh;
+	border: 1px solid black;
+}
+.topmiddle {
+	background-color:lavenderblush;
+	height: 10vh;
+	border: 1px solid black;
+}
+.columns {
+	background-color:lavender;
+	height: 90vh;
+	border: 1px solid black;
+}
+.middle {
+	background-color:lavenderblush;
+	height: 90vh;
+	border: 1px solid black;
+}
