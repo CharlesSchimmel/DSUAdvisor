@@ -4,14 +4,14 @@
     const MINYEAR = 2000;
     const MAXYEAR = 2040;
 
-    export class Course {
-        private _classId: number;
-        private _name: string;
-        private _courseNumber: string;
-        private _creditHours: number;
-        private _subject;
-        private _description: string;
-        private _preRequisites;
+    export class Course{
+        protected _classId: number;
+        protected _name: string;
+        protected _courseNumber: string;
+        protected _creditHours: number;
+        protected _subject;
+        protected _description: string;
+        protected _preRequisites;
 
         //--------
 
@@ -70,7 +70,7 @@
         }
     }
 
-    export class CourseInstance extends Course {
+    export class CourseInstance extends Course{
         private _professor: string;
         private _semester: Semester;
         private _year: number;

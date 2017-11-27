@@ -55,6 +55,9 @@
     <TypeScriptCompile Include="public\javascripts\StudentHandler.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="public\javascripts\HandlerBase.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\index.ts" />
     <TypeScriptCompile Include="routes\user.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />

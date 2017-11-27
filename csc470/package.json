@@ -11,9 +11,11 @@
   },
   "main": "app.js",
   "dependencies": {
+    "@types/lowdb": "^0.15.0",
     "debug": "^2.2.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "lowdb": "^1.0.0",
     "pug": "^2.0.0-rc.4"
   }
 }

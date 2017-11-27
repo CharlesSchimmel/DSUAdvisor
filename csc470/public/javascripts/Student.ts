@@ -1,6 +1,11 @@
 ﻿import Id = require('./Id');
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
 
-class Student {
+const adapter = new FileSync('./../Students.json')
+const db = low(adapter)
+
+export class Student {
     private _userId: number;
     private _firstName: string;
     private _lastName: string;

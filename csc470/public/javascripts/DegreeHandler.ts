@@ -2,13 +2,16 @@
 
 
 class DegreeHandler {
-    getDegreeById(degreeId: number) {
+    getById(degreeId: number) {
 
     }
-    getDegreeByName(name: string) {
+    getByName(name: string) {
 
     }
-    addDegree(degree: degrees.Degree) {
+    add(degree: degrees.Degree) {
+
+    }
+    writeToDatabase(degree: degrees.Degree) {
 
     }
 }

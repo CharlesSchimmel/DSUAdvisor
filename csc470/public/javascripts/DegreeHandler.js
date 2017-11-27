@@ -3,11 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var DegreeHandler = (function () {
     function DegreeHandler() {
     }
-    DegreeHandler.prototype.getDegreeById = function (degreeId) {
+    DegreeHandler.prototype.getById = function (degreeId) {
     };
-    DegreeHandler.prototype.getDegreeByName = function (name) {
+    DegreeHandler.prototype.getByName = function (name) {
     };
-    DegreeHandler.prototype.addDegree = function (degree) {
+    DegreeHandler.prototype.add = function (degree) {
+    };
+    DegreeHandler.prototype.writeToDatabase = function (degree) {
     };
     return DegreeHandler;
 }());
