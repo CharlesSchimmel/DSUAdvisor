@@ -1,14 +1,14 @@
 ﻿import courses = require('./Course');
 import Handler = require('./HandlerBase');
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-
-
-const dataBaseLoc = './../json/Courses.json';
 
 class CourseHandler extends Handler.HandlerBase{
 
-    constructor() { super(); }
+    private _dataBaseLoc = './../json/Courses.json';
+
+    constructor() {
+        super();
+        this._db.defaults({ course: {} }).write();
+    }
 
     getById(degreeId: number) {
 
@@ -16,8 +16,9 @@ class CourseHandler extends Handler.HandlerBase{
     getByName(name: string) {
 
     }
-    addCourse(course: courses.Course) {
-
+    add(course: courses.Course) {
+        db.set('user.name', 'typicode')
+            .write()
     }
     writeToDatabase(course: courses.Course) {
 

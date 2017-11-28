@@ -15,6 +15,6 @@ export abstract class HandlerBase {
     }
     abstract getById(Id: number);
     abstract getByName(name: string);
-    abstract add();
-    abstract writeToDatabase();
+    abstract add(object);
+    abstract writeToDatabase(object);
 }
