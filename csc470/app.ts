@@ -9,7 +9,7 @@ import session = require('express-session');
 import bodyParser = require('body-parser');
 import errorHandler = require('errorhandler');
 import cookieParser = require('cookie-parser');
-import MongoStore = require('connect-mongo');//(session);
+var MongoStore = require('connect-mongo')(session);
 
 import routes from './routes/index';
 import users from './routes/user';
@@ -21,16 +21,17 @@ var app = express();
  */
 var engines = require('consolidate');
 app.set('views', path.join(__dirname, 'views'));
-app.engine('jade', engines.jade);
-app.engine('pug', engines.pug);
-app.engine('html', engines.ejs);
+//app.set('views', __dirname + '/app/server/views');
+//app.engine('jade', engines.jade);
+//app.engine('pug', engines.pug);
+//app.engine('html', engines.ejs);
 
 /**set view engine pug*/
 //app.set('view engine', 'pug');
 
 /**set view engine jade*/
-//app.set('views', __dirname + '/app/server/views');
-//app.set('view engine', 'jade');
+//app.set('views', __dirname + '\\views');
+app.set('view engine', 'jade');
 
 /**set view engine html*/
 //app.engine('html', require('ejs').renderFile);

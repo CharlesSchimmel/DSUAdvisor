@@ -9,7 +9,7 @@ var path = require("path");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
-var MongoStore = require("connect-mongo"); //(session);
+var MongoStore = require('connect-mongo')(session);
 var index_1 = require("./routes/index");
 var user_1 = require("./routes/user");
 var app = express();
@@ -18,14 +18,15 @@ var app = express();
  */
 var engines = require('consolidate');
 app.set('views', path.join(__dirname, 'views'));
-app.engine('jade', engines.jade);
-app.engine('pug', engines.pug);
-app.engine('html', engines.ejs);
+//app.set('views', __dirname + '/app/server/views');
+//app.engine('jade', engines.jade);
+//app.engine('pug', engines.pug);
+//app.engine('html', engines.ejs);
 /**set view engine pug*/
 //app.set('view engine', 'pug');
 /**set view engine jade*/
-//app.set('views', __dirname + '/app/server/views');
-//app.set('view engine', 'jade');
+//app.set('views', __dirname + '\\views');
+app.set('view engine', 'jade');
 /**set view engine html*/
 //app.engine('html', require('ejs').renderFile);
 //app.set('view engine', 'html');

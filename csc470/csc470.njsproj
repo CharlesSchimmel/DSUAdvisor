@@ -103,9 +103,9 @@
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="views\index.html" />
-    <Content Include="views\xindex.pug" />
-    <Content Include="views\layout.pug" />
-    <Content Include="views\error.pug" />
+    <Content Include="views\index.jade" />
+    <Content Include="views\layout.jade" />
+    <Content Include="views\error.jade" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\fonts\" />
