@@ -17,8 +17,7 @@ class CourseHandler extends Handler.HandlerBase{
 
     }
     add(course: courses.Course) {
-        db.set('user.name', 'typicode')
-            .write()
+        //db.set('user.name', 'typicode').write()
     }
     writeToDatabase(course: courses.Course) {
 

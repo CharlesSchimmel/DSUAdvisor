@@ -11,19 +11,20 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Handler = require("./HandlerBase");
-var low = require('lowdb');
-var FileSync = require('lowdb/adapters/FileSync');
-var dataBaseLoc = './../json/Courses.json';
 var CourseHandler = (function (_super) {
     __extends(CourseHandler, _super);
     function CourseHandler() {
-        return _super.call(this) || this;
+        var _this = _super.call(this) || this;
+        _this._dataBaseLoc = './../json/Courses.json';
+        _this._db.defaults({ course: {} }).write();
+        return _this;
     }
     CourseHandler.prototype.getById = function (degreeId) {
     };
     CourseHandler.prototype.getByName = function (name) {
     };
     CourseHandler.prototype.add = function (course) {
+        //db.set('user.name', 'typicode').write()
     };
     CourseHandler.prototype.writeToDatabase = function (course) {
     };
