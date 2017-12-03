@@ -412,6 +412,8 @@ declare module "express-serve-static-core" {
         baseUrl: string;
 
         app: Application;
+
+        user: any;
     }
 
     interface MediaType {

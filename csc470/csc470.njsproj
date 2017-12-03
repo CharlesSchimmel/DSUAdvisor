@@ -45,6 +45,9 @@
     </Content>
     <Content Include="views\login.html" />
     <Content Include="views\major.html" />
+    <Content Include="views\profile.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\signup.html" />
     <Content Include="views\track.html" />
     <TypeScriptCompile Include="app.ts" />
@@ -72,7 +75,12 @@
     <TypeScriptCompile Include="public\javascripts\HandlerBase.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\profile.ts" />
+    <TypeScriptCompile Include="routes\login.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
+    <TypeScriptCompile Include="routes\logout.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\major.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -88,24 +96,8 @@
     <TypeScriptCompile Include="typings\globals\serve-static\index.d.ts" />
     <Content Include="public\stylesheets\node-loginStyle.css" />
     <Content Include="public\stylesheets\node-loginStyle.styl" />
-    <Content Include="public\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="public\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="public\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="public\vendor\bootstrap.min.css" />
     <Content Include="public\vendor\bootstrap.min.css.map" />
-    <Content Include="server\views\404.jade" />
-    <Content Include="server\views\account.jade" />
-    <Content Include="server\views\home.jade" />
-    <Content Include="server\views\layout.jade" />
-    <Content Include="server\views\login.jade" />
-    <Content Include="server\views\modals\alert.jade" />
-    <Content Include="server\views\modals\confirm.jade" />
-    <Content Include="server\views\modals\form-errors.jade" />
-    <Content Include="server\views\modals\lost-password.jade" />
-    <Content Include="server\views\modals\reset-password.jade" />
-    <Content Include="server\views\print.jade" />
-    <Content Include="server\views\reset.jade" />
-    <Content Include="server\views\signup.jade" />
     <Content Include="package.json" />
     <Content Include="public\json\CourseInstences.json">
       <SubType>Code</SubType>
@@ -126,16 +118,8 @@
     <Content Include="views\layout.jade" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="public\fonts\" />
-    <Folder Include="public\javascripts\controllers\" />
-    <Folder Include="public\javascripts\form-validators\" />
-    <Folder Include="public\javascripts\handlers\" />
-    <Folder Include="public\javascripts\views\" />
+    <Folder Include="db\" />
     <Folder Include="public\vendor\" />
-    <Folder Include="server\" />
-    <Folder Include="server\modules\" />
-    <Folder Include="server\views\" />
-    <Folder Include="server\views\modals\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
@@ -155,25 +139,11 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="public\javascripts\controllers\homeController.js" />
-    <Compile Include="public\javascripts\controllers\loginController.js" />
-    <Compile Include="public\javascripts\controllers\signupController.js" />
-    <Compile Include="public\javascripts\form-validators\accountValidator.js" />
-    <Compile Include="public\javascripts\form-validators\emailValidator.js" />
-    <Compile Include="public\javascripts\form-validators\loginValidator.js" />
-    <Compile Include="public\javascripts\form-validators\resetValidator.js" />
-    <Compile Include="public\javascripts\views\home.js" />
-    <Compile Include="public\javascripts\views\login.js" />
-    <Compile Include="public\javascripts\views\reset.js" />
-    <Compile Include="public\javascripts\views\signup.js" />
+    <Compile Include="db\index.js" />
+    <Compile Include="db\users.js" />
     <Compile Include="public\vendor\bootstrap.min.js" />
     <Compile Include="public\vendor\jquery-2.2.3.min.js" />
     <Compile Include="public\vendor\jquery.form.min.js" />
-    <Compile Include="server\modules\account-manager.js" />
-    <Compile Include="server\modules\country-list.js" />
-    <Compile Include="server\modules\email-dispatcher.js" />
-    <Compile Include="server\routes.js" />
-    <Compile Include="loginapp.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

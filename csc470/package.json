@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/lowdb": "^0.15.0",
     "body-parser": "^1.14.1",
+    "connect-ensure-login": "^0.1.1",
     "connect-mongo": "0.8.2",
     "consolidate": "^0.15.0",
     "cookie-parser": "1.4.0",
@@ -26,6 +27,10 @@
     "lowdb": "^1.0.0",
     "moment": "2.10.3",
     "mongodb": "^2.2.33",
+    "mongoose": "^4.13.6",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.4",
     "raw-body": "2.3.2",
     "session": "^0.1.0",

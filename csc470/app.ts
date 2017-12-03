@@ -9,7 +9,10 @@ import session = require('express-session');
 import bodyParser = require('body-parser');
 import errorHandler = require('errorhandler');
 import cookieParser = require('cookie-parser');
-var MongoStore = require('connect-mongo')(session);
+import { Request } from "express";
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
+var db = require('./db');
 
 /**
  * LIST OF ROUTS
@@ -18,27 +21,15 @@ import routes from './routes/index';
 import users from './routes/user';
 import major from './routes/major';
 import track from './routes/track';
+import logout from './routes/logout';
+import login from './routes/login';
+import profile from './routes/profile';
 
 var app = express();
 
 /**
  * SET UP VIEW ENGINE
  */
-var engines = require('consolidate');
-app.set('views', path.join(__dirname, 'views'));
-//app.set('views', __dirname + '/app/server/views');
-//app.engine('jade', engines.jade);
-//app.engine('pug', engines.pug);
-//app.engine('html', engines.ejs);
-
-/**set view engine pug*/
-//app.set('view engine', 'pug');
-
-/**set view engine jade*/
-//app.set('views', __dirname + '\\views');
-//app.set('view engine', 'jade');
-
-/**set view engine html*/
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -46,13 +37,57 @@ app.set('view engine', 'html');
  * APP USE
  */
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static(__dirname + '/app/public'));
-
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(require('stylus').middleware({ src: __dirname + './public' }));
+//app.use(require('stylus').middleware({ src: __dirname + './public' }));
+app.use(require('morgan')('combined'));
+app.use(require('cookie-parser')());
+app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
+/**
+ * LOGIN SERVER
+ */
+
+// Configure the local strategy for use by Passport.
+//
+// The local strategy require a `verify` function which receives the credentials
+// (`username` and `password`) submitted by the user.  The function must verify
+// that the password is correct and then invoke `cb` with a user object, which
+// will be set at `req.user` in route handlers after authentication.
+passport.use(new Strategy(
+    function (username, password, cb) {
+        db.users.findByUsername(username, function (err, user) {
+            if (err) { return cb(err); }
+            if (!user) { return cb(null, false); }
+            if (user.password != password) { return cb(null, false); }
+            return cb(null, user);
+        });
+    }));
+
+
+// Configure Passport authenticated session persistence.
+//
+// In order to restore authentication state across HTTP requests, Passport needs
+// to serialize users into and deserialize users out of the session.  The
+// typical implementation of this is as simple as supplying the user ID when
+// serializing, and querying the user record by ID from the database when
+// deserializing.
+passport.serializeUser(function (user, cb) {
+    cb(null, user.id);
+});
+
+passport.deserializeUser(function (id, cb) {
+    db.users.findById(id, function (err, user) {
+        if (err) { return cb(err); }
+        cb(null, user);
+    });
+});
+
+// Initialize Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+app.use(passport.session());
 
 /**
  * LIST OF PAGES
@@ -61,61 +96,65 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/major', major);
 app.use('/track', track);
-
-
-
-/**
- * Set database hosts
- */
-var dbHost = process.env.DB_HOST || 'localhost'
-var dbPort = process.env.DB_PORT || 27017;
-var dbName = process.env.DB_NAME || 'node-login';
-
-var dbURL = 'mongodb://' + dbHost + ':' + dbPort + '/' + dbName;
-if (app.get('env') == 'live') {
-    // prepend url with authentication credentials // 
-    dbURL = 'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + dbHost + ':' + dbPort + '/' + dbName;
-}
-
-
-/**
- * APP SESSION
- */
-app.use(session({
-    secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
-    proxy: true,
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({ url: dbURL })
-})
-);
-
-//require('./app/server/routes')(app);
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/profile', profile);
 
 /**
  * PAGE REQUESTS
  */
+/////HOME
+app.get('/',
+    function (req, res) {
+        res.render('home', { user: req.user });
+    });
+
+/////MAJOR
+app.get('/major', function (req, res) {
+    //console.log(req.body);
+    //console.log(res.json.toString());
+    return res.render('major');
+});
 
 app.post('/majorSubmit', function (req, res) {
     console.log(req.body);
     return res.end;
 });
 
-app.get('/major.html', function (req, res) {
 
-
-    //console.log(req.body);
-    //console.log(res.json.toString());
-    return res.render('major', {
-        major: "Major",
-        year: "2017"
-    });
-});
-
-app.get('/track.html', function (req, res) {
+/////TRACK
+app.get('/track', function (req, res) {
     //console.log(req.body);
     return res.render('track');
 });
+
+/////LOGIN
+app.get('/login',
+    function (req, res) {
+        res.render('login');
+    });
+
+app.post('/login',
+    passport.authenticate('local', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect('/');
+    });
+
+
+/////LOGOUT
+app.get('/logout',
+    function (req, res) {
+        res.render('logout')
+    });
+
+
+/////PROFILE
+app.get('/profile',
+    require('connect-ensure-login').ensureLoggedIn(),
+    function (req, res) {
+        res.render('profile', { user: req.user });
+    });
+
 
 /**
  * ERROR HANDLERS

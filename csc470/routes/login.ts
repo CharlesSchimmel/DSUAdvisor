@@ -1,11 +1,12 @@
 ﻿/*
- * GET users listing.
+ * GET home page.
  */
 import express = require('express');
 const router = express.Router();
 
 router.get('/', (req: express.Request, res: express.Response) => {
-    res.send("respond with a resource");
+    console.log('logged in');
+    res.render('login');
 });
 
 export default router;
