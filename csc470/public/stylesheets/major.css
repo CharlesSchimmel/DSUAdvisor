@@ -2,7 +2,7 @@
 	width: 250px;
 	height: 28px;
 	overflow: hidden;
-	background: url(../pics/dropdown.png) no-repeat right #FEFEFE;
+	background: url(./../images/dropdown.png) no-repeat right #FEFEFE;
 	border: #999999 1px solid;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;

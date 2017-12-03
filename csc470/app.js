@@ -10,8 +10,13 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var MongoStore = require('connect-mongo')(session);
+/**
+ * LIST OF ROUTS
+ */
 var index_1 = require("./routes/index");
 var user_1 = require("./routes/user");
+var major_1 = require("./routes/major");
+var track_1 = require("./routes/track");
 var app = express();
 /**
  * SET UP VIEW ENGINE
@@ -39,8 +44,13 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('stylus').middleware({ src: __dirname + './public' }));
+/**
+ * LIST OF PAGES
+ */
 app.use('/', index_1.default);
 app.use('/users', user_1.default);
+app.use('/major', major_1.default);
+app.use('/track', track_1.default);
 /**
  * Set database hosts
  */
@@ -66,15 +76,31 @@ app.use(session({
 /**
  * PAGE REQUESTS
  */
+app.post('/majorSubmit', function (req, res) {
+    console.log(req.body);
+    return res.end;
+});
+app.get('/major.html', function (req, res) {
+    //console.log(req.body);
+    //console.log(res.json.toString());
+    return res.render('major', {
+        major: "Major",
+        year: "2017"
+    });
+});
+app.get('/track.html', function (req, res) {
+    //console.log(req.body);
+    return res.render('track');
+});
+/**
+ * ERROR HANDLERS
+ */
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err['status'] = 404;
     next(err);
 });
-/**
- * ERROR HANDLERS
- */
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {

@@ -33,12 +33,16 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="public\images\dropdown.png" />
     <Content Include="public\stylesheets\index.css" />
     <Content Include="public\stylesheets\login.css" />
     <Content Include="public\stylesheets\major.css" />
     <Content Include="public\stylesheets\navbar.css" />
     <Content Include="public\stylesheets\signup.css" />
     <Content Include="public\stylesheets\track.css" />
+    <Content Include="views\error.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\login.html" />
     <Content Include="views\major.html" />
     <Content Include="views\signup.html" />
@@ -69,6 +73,12 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\index.ts" />
+    <TypeScriptCompile Include="routes\major.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\track.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\user.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="typings\globals\debug\index.d.ts" />
@@ -109,13 +119,11 @@
     <Content Include="public\json\Students.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="public\stylesheets\indexstyle.css" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="views\index.html" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
-    <Content Include="views\error.jade" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\fonts\" />
