@@ -173,5 +173,96 @@
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
+  },
+  { "_name" : "Written Communication"
+   ,"_courseNumber" : "101"
+   ,"_subject" : "ENGL"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Arts and Humanities Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "ART"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Arts and Humanities Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "ART"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Oral Communications"
+   ,"_courseNumber" : "101"
+   ,"_subject" : "SCPM"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Social Science Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "SOC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Social Science Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "SOC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Natural Science Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "NAT"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Calculus II"
+   ,"_courseNumber" : "125"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Calculus I"
+   ,"_courseNumber" : "123"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Intro to Stats"
+   ,"_courseNumber" : "281"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Math Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Math Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Natural Science Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "NAT"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
   }
 ]
