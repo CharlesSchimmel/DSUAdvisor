@@ -1,0 +1,177 @@
+[
+  { "_name" : "Introduction to Computers"
+   ,"_courseNumber" : "105"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Computer Science I"
+   ,"_courseNumber" : "150"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Computer Science II"
+   ,"_courseNumber" : "250"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 250"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Info Security Fundamentals"
+   ,"_courseNumber" : "245"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Intro to Discrete Math"
+   ,"_courseNumber" : "201"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Data Structures"
+   ,"_courseNumber" : "300"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 250"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Assembly Language"
+   ,"_courseNumber" : "314"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 250"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Systems Analysis"
+   ,"_courseNumber" : "332"
+   ,"_subject" : "CIS"
+   ,"_preRequisites" : ["CSC 150"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Discrete Math"
+   ,"_courseNumber" : "316"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : ["MATH 201"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Object Oriented Design"
+   ,"_courseNumber" : "260"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 250"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Database Management Systems"
+   ,"_courseNumber" : "484"
+   ,"_subject" : "CIS"
+   ,"_preRequisites" : ["CSC 150"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "CSC Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Networking I"
+   ,"_courseNumber" : "383"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Algorithms & Optimization"
+   ,"_courseNumber" : "482"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 260","CSC 300","MATH 316"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Parallel Computing"
+   ,"_courseNumber" : "410"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 300"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "CSC 300+ Level Elective"
+   ,"_courseNumber" : "300"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "CSC Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Programming Languages"
+   ,"_courseNumber" : "461"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 300","CSC 260"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Software Engineering"
+   ,"_courseNumber" : "470"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 300"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "CSC 300+ Elective"
+   ,"_courseNumber" : "300"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Operating Systems"
+   ,"_courseNumber" : "456"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 300","CSC 314"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Language Processing"
+   ,"_courseNumber" : "466"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : ["CSC 300","CSC 461"]
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "CSC 300+ Elective"
+   ,"_courseNumber" : "300"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "CSC Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "CSC Elective"
+   ,"_courseNumber" : "000"
+   ,"_subject" : "CSC"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  }
+]
