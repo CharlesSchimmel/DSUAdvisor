@@ -1,0 +1,28 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+h1, h2, h3, p {
+	text-align: center;
+}
+
+h2 {
+	color: black;
+}
+.btn-group-vertical {
+	width: 370px;
+}
+.btn-group-vertical > a {
+	font-size: 20px;
+	color: #ffff00;
+    margin-bottom:3px;
+    border-radius:0px !important;
+}
+.addpadding {
+	margin-top: 25vh;
+	position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

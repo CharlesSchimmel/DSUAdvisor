@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Advisor Home</title>
+	<title>Change Major</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="stylesheets/navbar.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/major.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +24,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.html">Home</a></li>
+				<li><a href="index.html">Home</a></li>
 				<li><a href="https://wa-dsu.prod.sdbor.edu/WebAdvisor/webadvisor?TOKENIDX=8137505581&CONSTITUENCY=WBST&TYPE=M&PID=CORE-WBST">WebAdvisor</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -37,14 +37,14 @@
 
 <div class="main">
 	<div class="center addpadding">
-		<h2>Home</h2>
-		<h3>Major: <h3>
-		<div class="btn-group-vertical">
-			<a type="button" class="btn btn-primary" href="major.html">Select / Change Major</a>
-			<a type="button" class="btn btn-primary">Classes Current Status</a>
-			<a type="button" class="btn btn-primary">Classes Left to Take</a>
-			<a type="button" class="btn btn-primary" href="track.html">Track Progress</a>
-			<a type="button" class="btn btn-primary">Create Schedule</a>
+		<h3>Select A Major</h3>
+		<div class="select_join">
+			<select name="txtCountry">
+				<option value="" disabled="disabled" selected="selected">Major</option>
+				<option value="1">Computer Science</option>
+				<option value="2">Computer Engineering</option>
+			</select>
 		</div>
+		<input type="submit" class="btn btn-primary" value="Submit" style="margin-top: 10px;">
 	</div>
 </div>

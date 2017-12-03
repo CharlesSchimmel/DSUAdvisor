@@ -26,10 +26,10 @@ app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'pug');
 /**set view engine jade*/
 //app.set('views', __dirname + '\\views');
-app.set('view engine', 'jade');
+//app.set('view engine', 'jade');
 /**set view engine html*/
-//app.engine('html', require('ejs').renderFile);
-//app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 /**
  * APP USE
  */

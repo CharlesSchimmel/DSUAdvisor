@@ -33,6 +33,16 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="public\stylesheets\index.css" />
+    <Content Include="public\stylesheets\login.css" />
+    <Content Include="public\stylesheets\major.css" />
+    <Content Include="public\stylesheets\navbar.css" />
+    <Content Include="public\stylesheets\signup.css" />
+    <Content Include="public\stylesheets\track.css" />
+    <Content Include="views\login.html" />
+    <Content Include="views\major.html" />
+    <Content Include="views\signup.html" />
+    <Content Include="views\track.html" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="public\javascripts\Course.ts">
       <SubType>Code</SubType>
