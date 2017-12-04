@@ -1,39 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Change Major</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="stylesheets/navbar.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/major.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <% include ./navbar %>
 </head>
 <body>
-
-<nav class="navbar navbar-custom navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span> 
-			</button>
-			<a class="navbar-brand" href="index.html">DSU Advisor</a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="https://wa-dsu.prod.sdbor.edu/WebAdvisor/webadvisor?TOKENIDX=8137505581&CONSTITUENCY=WBST&TYPE=M&PID=CORE-WBST">WebAdvisor</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
 
 <div class="main">
 	<div class="center addpadding">
@@ -49,3 +19,6 @@
         <form method="post" action="/majorSubmit" enctype="multipart/form-data"><input class="btn btn-primary" type="submit" value="Submit" /></form>
 	</div>
 </div>
+
+</body>
+</html>
