@@ -1,18 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Id = require("./Id");
-var low = require('lowdb');
-var FileSync = require('lowdb/adapters/FileSync');
-var adapter = new FileSync('./../Students.json');
-var db = low(adapter);
+var Global = require("./Global");
 var Student = (function () {
     function Student(firstName, lastName, userName, password) {
         this._firstName = firstName;
         this._lastName = lastName;
         this._userName = userName;
         this._password = password;
-        this._userId = Id.genUniqueId();
+        this._userId = Global.genUniqueId();
     }
+    Student.prototype.createSchema = function () {
+        var Schema = mongoose.Schema;
+        var schema = new Schema({
+            userId: Number,
+            firstName: String,
+            lastName: String,
+            major: Number,
+            progLength: Number,
+            userName: String,
+            password: String,
+        });
+    };
     return Student;
 }());
 exports.Student = Student;

@@ -1,4 +1,4 @@
-﻿import id = require('./Id');
+﻿import Global = require('./Global');
 
 export class Degree {
      private _degreeId: number;
@@ -14,7 +14,7 @@ export class Degree {
      this._description = description;
      this._college = college;
      this._requiredClasses = requiredClasses;
-     this._degreeId = id.genUniqueId();
+     this._degreeId = Global.genUniqueId();
      }
 }
 

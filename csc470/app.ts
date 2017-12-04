@@ -9,7 +9,7 @@ import session = require('express-session');
 import bodyParser = require('body-parser');
 import errorHandler = require('errorhandler');
 import cookieParser = require('cookie-parser');
-import { Request } from "express";
+import ejs = require('ejs');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
@@ -24,14 +24,15 @@ import track from './routes/track';
 import logout from './routes/logout';
 import login from './routes/login';
 import profile from './routes/profile';
+import signup from './routes/signup';
 
 var app = express();
 
 /**
  * SET UP VIEW ENGINE
  */
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 /**
  * APP USE
@@ -99,6 +100,8 @@ app.use('/track', track);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/profile', profile);
+app.use('/signup', signup);
+
 
 /**
  * PAGE REQUESTS
@@ -108,6 +111,20 @@ app.get('/',
     function (req, res) {
         res.render('home', { user: req.user });
     });
+
+/////PROFILE
+app.get('/profile', function (req, res) {
+    require('connect-ensure-login').ensureLoggedIn();
+    return res.render('profile', {
+        tile: "Accout Information",
+        user: req.user
+    });
+});
+
+/////SIGNUP
+app.get('/signup', function (req, res) {
+    return res.render('signup');
+});
 
 /////MAJOR
 app.get('/major', function (req, res) {
@@ -145,14 +162,6 @@ app.post('/login',
 app.get('/logout',
     function (req, res) {
         res.render('logout')
-    });
-
-
-/////PROFILE
-app.get('/profile',
-    require('connect-ensure-login').ensureLoggedIn(),
-    function (req, res) {
-        res.render('profile', { user: req.user });
     });
 
 

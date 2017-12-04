@@ -7,7 +7,7 @@ class CourseHandler extends Handler.HandlerBase{
 
     constructor() {
         super();
-        this._db.defaults({ course: {} }).write();
+        
     }
 
     getById(degreeId: number) {
@@ -17,7 +17,6 @@ class CourseHandler extends Handler.HandlerBase{
 
     }
     add(course: courses.Course) {
-        //db.set('user.name', 'typicode').write()
     }
     writeToDatabase(course: courses.Course) {
 

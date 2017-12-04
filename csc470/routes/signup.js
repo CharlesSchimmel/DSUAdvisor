@@ -6,10 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var router = express.Router();
 router.get('/', function (req, res) {
-    res.render('profile', {
-        tile: "Accout Information",
-        user: "NAME"
-    });
+    res.render('signup');
 });
 exports.default = router;
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=signup.js.map

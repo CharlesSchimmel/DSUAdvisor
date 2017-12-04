@@ -1,16 +1,10 @@
-﻿import Id = require('./Id');
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-
-const adapter = new FileSync('./../Students.json')
-const db = low(adapter)
+﻿import Global = require('./Global');
 
 export class Student {
     private _userId: number;
     private _firstName: string;
     private _lastName: string;
-    private _major: number;
-
+    private _major: string;
     private _progLength: number;
     private _userName: string;
     private _password: string;
@@ -20,6 +14,19 @@ export class Student {
         this._lastName = lastName;
         this._userName = userName;
         this._password = password;
-        this._userId = Id.genUniqueId();
+        this._userId = Global.genUniqueId();
+    }
+
+    public createSchema() {
+        var Schema = mongoose.Schema;
+        var schema = new Schema({
+            userId: Number,
+            firstName: String,
+            lastName: String,
+            major: Number,
+            progLength: Number,
+            userName: String,
+            password: String,
+        })
     }
 }

@@ -16,7 +16,6 @@ var CourseHandler = (function (_super) {
     function CourseHandler() {
         var _this = _super.call(this) || this;
         _this._dataBaseLoc = './../json/Courses.json';
-        _this._db.defaults({ course: {} }).write();
         return _this;
     }
     CourseHandler.prototype.getById = function (degreeId) {
@@ -24,7 +23,6 @@ var CourseHandler = (function (_super) {
     CourseHandler.prototype.getByName = function (name) {
     };
     CourseHandler.prototype.add = function (course) {
-        //db.set('user.name', 'typicode').write()
     };
     CourseHandler.prototype.writeToDatabase = function (course) {
     };

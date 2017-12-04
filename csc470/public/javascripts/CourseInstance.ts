@@ -1,20 +1,37 @@
-import Id = require('./Id');
+import Global = require('./Global');
 import Course = require('./Course');
 
-namespace courseinstances {
-    class CourseInstance extends Course{
-        private _professor: courses.Professor;
-        private _semester: courses.Semester;
-        private _time: number;
-        private _sectionNumber: string;
+export class CourseInstance extends Course.Course {
+    private _professor: string;
+    private _semester: Course.Semester;
+    private _year: number;
+    private _sectionNumber: string;
+    private _times;
 
-        constructor(name: string, courseNumber: string, creditHours: number, subject: Subject, description: string, professor: Professor, semester: Semester, time: number, sectionNumber: string) {
-            super(name, courseNumber, creditHours, subject, description);
-            this._professor = professor;
-            this._semester = semester;
-            this._times = times;
-            this._sectionNumber = sectionNumber;
-            this._classId = Id.genUniqueId();
+    //------------------
+
+    public getProfessor() {
+        return this._professor;
+    }
+    public setProfessor(professor: string) {
+        this._professor = professor;
+    }
+
+    public getSemester() {
+        return this._semester;
+    }
+    public setSemester(semester: Course.Semester) {
+        this._semester = semester;
+    }
+
+    public getYear() {
+        return this._year;
+    }
+    public setYear(year: number) {
+        if (year > Global.MINYEAR && year < Global.MAXYEAR) {
+            this._year = year;
         }
     }
+
+
 }

@@ -1,17 +1,5 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var MINYEAR = 2000;
-var MAXYEAR = 2040;
 var Course = (function () {
     function Course() {
     }
@@ -66,35 +54,6 @@ var Course = (function () {
     return Course;
 }());
 exports.Course = Course;
-var CourseInstance = (function (_super) {
-    __extends(CourseInstance, _super);
-    function CourseInstance() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    //------------------
-    CourseInstance.prototype.getProfessor = function () {
-        return this._professor;
-    };
-    CourseInstance.prototype.setProfessor = function (professor) {
-        this._professor = professor;
-    };
-    CourseInstance.prototype.getSemester = function () {
-        return this._semester;
-    };
-    CourseInstance.prototype.setSemester = function (semester) {
-        this._semester = semester;
-    };
-    CourseInstance.prototype.getYear = function () {
-        return this._year;
-    };
-    CourseInstance.prototype.setYear = function (year) {
-        if (year > MINYEAR && year < MAXYEAR) {
-            this._year = year;
-        }
-    };
-    return CourseInstance;
-}(Course));
-exports.CourseInstance = CourseInstance;
 var Subject;
 (function (Subject) {
     Subject[Subject["ENG"] = 0] = "ENG";

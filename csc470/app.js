@@ -21,12 +21,13 @@ var track_1 = require("./routes/track");
 var logout_1 = require("./routes/logout");
 var login_1 = require("./routes/login");
 var profile_1 = require("./routes/profile");
+var signup_1 = require("./routes/signup");
 var app = express();
 /**
  * SET UP VIEW ENGINE
  */
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 /**
  * APP USE
  */
@@ -93,12 +94,25 @@ app.use('/track', track_1.default);
 app.use('/login', login_1.default);
 app.use('/logout', logout_1.default);
 app.use('/profile', profile_1.default);
+app.use('/signup', signup_1.default);
 /**
  * PAGE REQUESTS
  */
 /////HOME
 app.get('/', function (req, res) {
     res.render('home', { user: req.user });
+});
+/////PROFILE
+app.get('/profile', function (req, res) {
+    require('connect-ensure-login').ensureLoggedIn();
+    return res.render('profile', {
+        tile: "Accout Information",
+        user: req.user
+    });
+});
+/////SIGNUP
+app.get('/signup', function (req, res) {
+    return res.render('signup');
 });
 /////MAJOR
 app.get('/major', function (req, res) {
@@ -125,10 +139,6 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login' })
 /////LOGOUT
 app.get('/logout', function (req, res) {
     res.render('logout');
-});
-/////PROFILE
-app.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function (req, res) {
-    res.render('profile', { user: req.user });
 });
 /**
  * ERROR HANDLERS

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var id = require("./Id");
+var Global = require("./Global");
 var Degree = (function () {
     function Degree(name, length, description, college, requiredClasses) {
         this._name = name;
@@ -8,7 +8,7 @@ var Degree = (function () {
         this._description = description;
         this._college = college;
         this._requiredClasses = requiredClasses;
-        this._degreeId = id.genUniqueId();
+        this._degreeId = Global.genUniqueId();
     }
     return Degree;
 }());

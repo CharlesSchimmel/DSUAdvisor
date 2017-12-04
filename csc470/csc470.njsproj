@@ -40,21 +40,28 @@
     <Content Include="public\stylesheets\navbar.css" />
     <Content Include="public\stylesheets\signup.css" />
     <Content Include="public\stylesheets\track.css" />
-    <Content Include="views\error.html">
+    <Content Include="views\error.ejs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\login.html" />
-    <Content Include="views\major.html" />
-    <Content Include="views\profile.html">
+    <Content Include="views\navbar.ejs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\signup.html" />
-    <Content Include="views\track.html" />
+    <Content Include="views\login.ejs" />
+    <Content Include="views\major.ejs" />
+    <Content Include="views\profile.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\signup.ejs" />
+    <Content Include="views\track.ejs" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="public\javascripts\Course.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="public\javascripts\CourseHandler.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="public\javascripts\CourseInstance.ts" />
+    <TypeScriptCompile Include="public\javascripts\dbConection.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="public\javascripts\Degree.ts">
@@ -63,7 +70,7 @@
     <TypeScriptCompile Include="public\javascripts\DegreeHandler.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="public\javascripts\Id.ts">
+    <TypeScriptCompile Include="public\javascripts\Global.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="public\javascripts\Student.ts">
@@ -75,6 +82,7 @@
     <TypeScriptCompile Include="public\javascripts\HandlerBase.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\signup.ts" />
     <TypeScriptCompile Include="routes\profile.ts" />
     <TypeScriptCompile Include="routes\login.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
@@ -113,9 +121,7 @@
     </Content>
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
-    <Content Include="views\index.html" />
-    <Content Include="views\index.jade" />
-    <Content Include="views\layout.jade" />
+    <Content Include="views\index.ejs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="db\" />
