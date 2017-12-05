@@ -94,14 +94,14 @@
    ,"_courseNumber" : "482"
    ,"_subject" : "CSC"
    ,"_preRequisites" : ["CSC 260","CSC 300","MATH 316"]
-   ,"_description" : "This course will study computer algorithms, their performance, and techniques for optimizing algorithm implementation. A variety of algorithms including search, sorting, and graph algorithms will be examined. Tools and methods for analyzing and measuring both theoretical and practical performance will be studied. Techniques for improving the performance of implementations of the algorithms will be examined. "
+   ,"_description" : "FALL ONLY. This course will study computer algorithms, their performance, and techniques for optimizing algorithm implementation. A variety of algorithms including search, sorting, and graph algorithms will be examined. Tools and methods for analyzing and measuring both theoretical and practical performance will be studied. Techniques for improving the performance of implementations of the algorithms will be examined. "
    ,"_creditHours" : 3
   },
   { "_name" : "Parallel Computing"
    ,"_courseNumber" : "410"
    ,"_subject" : "CSC"
    ,"_preRequisites" : ["CSC 300"]
-   ,"_description" : "The fundamental ideas and issues involved in programming and using parallel computers. This course will cover topics in the design, analysis, and implementation of parallel algorithms.  Environments discussed and used may include a variety of shared-memory and message passing models, cluster computing, and GPU computing.  "
+   ,"_description" : "FALL ONLY. The fundamental ideas and issues involved in programming and using parallel computers. This course will cover topics in the design, analysis, and implementation of parallel algorithms.  Environments discussed and used may include a variety of shared-memory and message passing models, cluster computing, and GPU computing.  "
    ,"_creditHours" : 3
   },
   { "_name" : "CSC 300+ Level Elective"
@@ -122,14 +122,14 @@
    ,"_courseNumber" : "461"
    ,"_subject" : "CSC"
    ,"_preRequisites" : ["CSC 300","CSC 260"]
-   ,"_description" : "This course consists of two parts. The first part introduces how programming languages are designed, including an introduction to the concepts of parsing and compiling. Issues related to implementation such as type checking, binding, and memory management are discussed. Secondly, the course will survey the spectrum of programming languages paradigms, including traditional imperative, object oriented, functional, and logic languages. <Paste>"
+   ,"_description" : "FALL ONLY. This course consists of two parts. The first part introduces how programming languages are designed, including an introduction to the concepts of parsing and compiling. Issues related to implementation such as type checking, binding, and memory management are discussed. Secondly, the course will survey the spectrum of programming languages paradigms, including traditional imperative, object oriented, functional, and logic languages. <Paste>"
    ,"_creditHours" : 3
   },
   { "_name" : "Software Engineering"
    ,"_courseNumber" : "470"
    ,"_subject" : "CSC"
    ,"_preRequisites" : ["CSC 300"]
-   ,"_description" : "An introduction to the software engineering process, including lifecycle phases, problem analysis, specification, project estimation and resource estimations, design, implementation, testing/maintenance, and project management. In particular, software validation and verification as well as scheduling and schedule assessment techniques will be discussed. "
+   ,"_description" : "FALL ONLY. An introduction to the software engineering process, including lifecycle phases, problem analysis, specification, project estimation and resource estimations, design, implementation, testing/maintenance, and project management. In particular, software validation and verification as well as scheduling and schedule assessment techniques will be discussed. "
    ,"_creditHours" : 3
   },
   { "_name" : "CSC 300+ Elective"
@@ -143,14 +143,14 @@
    ,"_courseNumber" : "456"
    ,"_subject" : "CSC"
    ,"_preRequisites" : ["CSC 300","CSC 314"]
-   ,"_description" : "A study of the functions and structures associated with operating systems with respect to process management, memory management, auxiliary storage management, and processor management. Topics include concurrent and distributed computing, deadlock, real and virtual memory, job and processor scheduling, security and protection."
+   ,"_description" : "SPRING ONLY. A study of the functions and structures associated with operating systems with respect to process management, memory management, auxiliary storage management, and processor management. Topics include concurrent and distributed computing, deadlock, real and virtual memory, job and processor scheduling, security and protection."
    ,"_creditHours" : 3
   },
   { "_name" : "Language Processing"
    ,"_courseNumber" : "466"
    ,"_subject" : "CSC"
    ,"_preRequisites" : ["CSC 300","CSC 461"]
-   ,"_description" : "A study of computer language processing through the activities of language design, specification, and translation. Computer language processing tools (compiler construction tools) will be used to demonstrate many of the concepts. The scanning, parsing, semantic analysis and code generation phases of compilation will be studied. Theoretical concepts including grammars and automata will be introduced. Programming projects will be required."
+   ,"_description" : "SPRING ONLY. A study of computer language processing through the activities of language design, specification, and translation. Computer language processing tools (compiler construction tools) will be used to demonstrate many of the concepts. The scanning, parsing, semantic analysis and code generation phases of compilation will be studied. Theoretical concepts including grammars and automata will be introduced. Programming projects will be required."
    ,"_creditHours" : 3
   },
   { "_name" : "CSC 300+ Elective"
