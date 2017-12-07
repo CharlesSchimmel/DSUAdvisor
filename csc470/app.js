@@ -27,7 +27,7 @@ var app = express();
 /**
  * SET UP VIEW ENGINE
  */
-app.engine('ejs', require('ejs').renderFile);
+//app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 /**
  * APP USE
@@ -100,9 +100,13 @@ app.use('/schedule', schedule_1["default"]);
 /**
  * PAGE REQUESTS
  */
-/////HOME
+/////Index
 app.get('/', function (req, res) {
     res.render('home', { user: req.user });
+});
+/////HOME
+app.get('/menu', function (req, res) {
+    res.render('menu');
 });
 /////PROFILE
 app.get('/profile', function (req, res) {

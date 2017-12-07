@@ -19,6 +19,7 @@ var db = require('./db');
  */
 import routes from './routes/index';
 import users from './routes/user';
+import menu from './routes/menu';
 import major from './routes/major';
 import track from './routes/track';
 import logout from './routes/logout';
@@ -32,7 +33,7 @@ var app = express();
 /**
  * SET UP VIEW ENGINE
  */
-app.engine('ejs', require('ejs').renderFile);
+//app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
 /**
@@ -96,6 +97,7 @@ app.use(passport.session());
  */
 app.use('/', routes);
 app.use('/users', users);
+app.use('/menu', signup);
 app.use('/major', major);
 app.use('/track', track);
 app.use('/login', login);
@@ -108,10 +110,16 @@ app.use('/schedule', schedule);
 /**
  * PAGE REQUESTS
  */
-/////HOME
+/////Index
 app.get('/',
     function (req, res) {
         res.render('home', { user: req.user });
+    });
+
+/////HOME
+app.get('/menu',
+    function (req, res) {
+        res.render('menu');
     });
 
 /////PROFILE

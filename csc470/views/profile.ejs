@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <% include ./navbar %>
-</head>
-<body>
-    welcome <% if (user) { %><%= user %><% } %>
-  </body>
+	<head>
+		<% include ./navbar %>
+	</head>
+	<body>
+	<br>
+	<br>
+	<br>
+		Welcome <%= typeof user.name!='undefined' ? user.name : '' %>!
+	</body>
 </html>
