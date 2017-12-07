@@ -13,6 +13,8 @@ import ejs = require('ejs');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
+var fs = require('fs');
+var all_courses = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
 
 /**
  * LIST OF ROUTS
@@ -26,6 +28,8 @@ import logout from './routes/logout';
 import login from './routes/login';
 import profile from './routes/profile';
 import signup from './routes/signup';
+import classes_current from './routes/classes_current';
+import classes_left from './routes/classes_left';
 import schedule from './routes/schedule';
 
 var app = express();
@@ -104,6 +108,8 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/profile', profile);
 app.use('/signup', signup);
+app.use('/classes_current', classes_current);
+app.use('/classes_left', classes_left);
 app.use('/schedule', schedule);
 
 
@@ -131,15 +137,28 @@ app.get('/profile', function (req, res) {
     });
 });
 
+/////classes_current
+app.get('/classes_current', function (req, res) {
+    return res.render('classes_current');
+});
+
 /////SIGNUP
 app.get('/signup', function (req, res) {
     return res.render('signup');
 });
 
+/////classes_left
+app.get('/classes_left', function (req, res) {
+    var classes_taken = []; // setting up test data
+    for (var i; i < 5; i++){
+        classes_taken.push(all_courses[i]);
+    }
+    return res.render('classes_left', { all_courses: all_courses , classes_taken: classes_taken });
+});
+
 /////schedule
 app.get('/schedule', function (req, res) {
-    var courseobj = {name: "test",}
-    return res.render('schedule', { courses: courseobj });
+    return res.render('schedule', { all_courses: all_courses });
 });
 
 /////MAJOR

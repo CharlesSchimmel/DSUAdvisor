@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 /*
  * GET home page.
  */
@@ -8,5 +8,4 @@ var router = express.Router();
 router.get('/track', function (req, res) {
     res.render('track');
 });
-exports.default = router;
-//# sourceMappingURL=track.js.map
+exports["default"] = router;

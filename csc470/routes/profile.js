@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 /*
  * GET home page.
  */
@@ -11,5 +11,4 @@ router.get('/', function (req, res) {
         user: "NAME"
     });
 });
-exports.default = router;
-//# sourceMappingURL=profile.js.map
+exports["default"] = router;

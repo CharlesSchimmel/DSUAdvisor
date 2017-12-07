@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 /*
  * logout
  */
@@ -17,5 +17,4 @@ router.get('/', logout, function (req, res) {
     //res.sendFile(path.resolve('./public/logout.html'));
 });
 router.get('/logout', logout());
-exports.default = router;
-//# sourceMappingURL=logout.js.map
+exports["default"] = router;
