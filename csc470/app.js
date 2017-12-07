@@ -8,9 +8,16 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
+var mongoose = require("mongoose");
+var Global = require("./public/javascripts/Global");
+/**
+ * Database and Sessions
+ */
+mongoose.connect('mongodb://localhost:27017');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
+var User = require("./db/users");
 /**
  * LIST OF ROUTS
  */
@@ -121,9 +128,28 @@ app.get('/profile', function (req, res) {
 app.get('/signup', function (req, res) {
     return res.render('signup');
 });
+app.post('/createAccount', function (req, res) {
+    var user = req.body;
+    console.log(req.body);
+    user["userId"] = Global.genUniqueId();
+    console.log(user.userId.toString());
+    var newUser = new User.User(user);
+    console.log(newUser.toString());
+    User.User.save(function (err) {
+        if (err)
+            return res.redirect('/signup');
+        console.log('User saved successfully!');
+    });
+    return res.redirect('/login');
+});
 /////schedule
 app.get('/schedule', function (req, res) {
-    var courseobj = { name: "test", };
+    var c1 = { name: "Engish 101" };
+    var c2 = { name: "CSC 100" };
+    var courseobj = {
+        english101: c1,
+        csc100: c2,
+    };
     return res.render('schedule', { courses: courseobj });
 });
 /////MAJOR

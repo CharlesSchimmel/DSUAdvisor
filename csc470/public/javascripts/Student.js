@@ -11,14 +11,17 @@ var Student = (function () {
     }
     Student.prototype.createSchema = function () {
         var Schema = mongoose.Schema;
-        var schema = new Schema({
+        var userSchema = new Schema({
             userId: Number,
             firstName: String,
             lastName: String,
             major: Number,
             progLength: Number,
-            userName: String,
-            password: String,
+            userName: { type: String, required: true, unique: true },
+            password: { type: String, required: true },
+            classesInProgress: [],
+            classesWaitlisted: [],
+            classesSignedUpfor: [],
         });
     };
     return Student;

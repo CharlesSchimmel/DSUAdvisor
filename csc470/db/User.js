@@ -16,4 +16,4 @@ exports.userSchema = new Schema({
 });
 exports.User = mongoose.model('User', exports.userSchema);
 module.exports = exports.User;
-//# sourceMappingURL=users.js.map
+//# sourceMappingURL=User.js.map

@@ -56,6 +56,9 @@
     <Content Include="views\signup.ejs" />
     <Content Include="views\track.ejs" />
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="db\users.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="public\javascripts\Course.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -150,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="db\index.js" />
-    <Compile Include="db\users.js" />
     <Compile Include="public\vendor\bootstrap.min.js" />
     <Compile Include="public\vendor\jquery-2.2.3.min.js" />
     <Compile Include="public\vendor\jquery.form.min.js" />
