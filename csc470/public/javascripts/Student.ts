@@ -21,20 +21,19 @@ export class Student {
         this._userId = Global.genUniqueId();
     }
 
-    public createSchema() {
-        var Schema = mongoose.Schema;
-        var userSchema = new Schema({
-            userId: Number,
-            firstName: String,
-            lastName: String,
-            major: Number,
-            progLength: Number,
-            userName: {type: String, required: true, unique: true},
-            password: { type: String, required: true},
-            classesInProgress: [],
-            classesWaitlisted: [],
-            classesSignedUpfor: [],
-        })
-    }
+    //public createSchema() {
+    //    var Schema = mongoose.Schema;
+    //    var userSchema = new Schema({
+    //        userId: Number,
+    //        firstName: String,
+    //        lastName: String,
+    //        major: Number,
+    //        progLength: Number,
+    //        userName: {type: String, required: true, unique: true},
+    //        password: { type: String, required: true},
+    //        classesInProgress: [],
+    //        classesWaitlisted: [],
+    //        classesSignedUpfor: [],
+    //    })
 }
 

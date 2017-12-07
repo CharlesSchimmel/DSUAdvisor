@@ -13,11 +13,26 @@ var Global = require("./public/javascripts/Global");
 /**
  * Database and Sessions
  */
-mongoose.connect('mongodb://localhost:27017');
+var myUri = 'mongodb://localhost:27017';
+var promise = mongoose.connect(myUri, {
+    useMongoClient: true,
+});
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
-var User = require("./db/users");
+//import User = require('./db/users');
+var User = mongoose.model('User', new mongoose.Schema({
+    userId: { type: Number, required: true, unique: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    major: Number,
+    progLength: Number,
+    userName: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    classesInProgress: [],
+    classesWaitlisted: [],
+    classesSignedUpfor: [],
+}));
 /**
  * LIST OF ROUTS
  */
@@ -129,18 +144,21 @@ app.get('/signup', function (req, res) {
     return res.render('signup');
 });
 app.post('/createAccount', function (req, res) {
+    //promise.then(function (db) { mongoose.connection.openUri(myUri) });
     var user = req.body;
     console.log(req.body);
     user["userId"] = Global.genUniqueId();
     console.log(user.userId.toString());
-    var newUser = new User.User(user);
-    console.log(newUser.toString());
-    User.User.save(function (err) {
+    console.log(user);
+    var newUser = new User(user);
+    console.log('User created successfully!');
+    User.save(function (err) {
         if (err)
             return res.redirect('/signup');
         console.log('User saved successfully!');
     });
-    return res.redirect('/login');
+    res.redirect('/login');
+    return res.end;
 });
 /////schedule
 app.get('/schedule', function (req, res) {
