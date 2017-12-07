@@ -9,8 +9,11 @@
 	<br>
     <div class="main">
 	<h1>TEST</h1>
-		<% for (var i = 0; i < courses.length; i++){ %>
-		<%= courses[i].name %>
-	<% } %>
+	<ul>
+		<% for (var i = 0; i < all_classes.length; i++){ %>
+		<li> <%= all_classes[i]._name %> </li>
+		<% } %>
+	</ul>
+
 </body>
 

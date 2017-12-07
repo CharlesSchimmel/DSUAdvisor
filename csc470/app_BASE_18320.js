@@ -8,33 +8,9 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
-var mongoose = require("mongoose");
-var Global = require("./public/javascripts/Global");
-var fs = require('fs');
-var all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
-/**
- * Database and Sessions
- */
-var myUri = 'mongodb://localhost:27017';
-var promise = mongoose.connect(myUri, {
-    useMongoClient: true,
-});
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
-//import User = require('./db/users');
-var User = mongoose.model('User', new mongoose.Schema({
-    userId: { type: Number, required: true, unique: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    major: Number,
-    progLength: Number,
-    userName: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    classesInProgress: [],
-    classesWaitlisted: [],
-    classesSignedUpfor: [],
-}));
 /**
  * LIST OF ROUTS
  */
@@ -46,8 +22,6 @@ var logout_1 = require("./routes/logout");
 var login_1 = require("./routes/login");
 var profile_1 = require("./routes/profile");
 var signup_1 = require("./routes/signup");
-var classes_current_1 = require("./routes/classes_current");
-var classes_left_1 = require("./routes/classes_left");
 var schedule_1 = require("./routes/schedule");
 var app = express();
 /**
@@ -123,8 +97,6 @@ app.use('/login', login_1.default);
 app.use('/logout', logout_1.default);
 app.use('/profile', profile_1.default);
 app.use('/signup', signup_1.default);
-app.use('/classes_current', classes_current_1.default);
-app.use('/classes_left', classes_left_1.default);
 app.use('/schedule', schedule_1.default);
 /**
  * PAGE REQUESTS
@@ -145,50 +117,13 @@ app.get('/profile', function (req, res) {
         user: req.user
     });
 });
-/////classes_current
-app.get('/classes_current', function (req, res) {
-    return res.render('classes_current');
-});
 /////SIGNUP
 app.get('/signup', function (req, res) {
     return res.render('signup');
 });
-app.post('/createAccount', function (req, res) {
-    //promise.then(function (db) { mongoose.connection.openUri(myUri) });
-    var user = req.body;
-    console.log(req.body);
-    user["userId"] = Global.genUniqueId();
-    console.log(user.userId.toString());
-    console.log(user);
-    var newUser = new User(user);
-    console.log('User created successfully!');
-    User.save(function (err) {
-        if (err)
-            return res.redirect('/signup');
-        console.log('User saved successfully!');
-    });
-    res.redirect('/login');
-    return res.end;
-});
-app.get('/classes_left', function (req, res) {
-    var classes_taken = []; // setting up test data
-    var classes_registered = []; // setting up test data
-    for (var i = 0; i < 5; i++) {
-        classes_taken.push(all_classes[i]);
-    }
-    for (var i = 0; i < 10; i++) {
-        classes_registered.push(all_classes[i]);
-    }
-    return res.render('classes_left', { all_classes: all_classes, classes_taken: classes_taken, classes_registered: classes_registered });
-});
 /////schedule
 app.get('/schedule', function (req, res) {
-    var c1 = { name: "Engish 101" };
-    var c2 = { name: "CSC 100" };
-    var courseobj = {
-        english101: c1,
-        csc100: c2,
-    };
+    var courseobj = { name: "test", };
     return res.render('schedule', { courses: courseobj });
 });
 /////MAJOR
@@ -204,7 +139,7 @@ app.post('/majorSubmit', function (req, res) {
 /////TRACK
 app.get('/track', function (req, res) {
     //console.log(req.body);
-    return res.render('track', { credits_needed: 66, });
+    return res.render('track');
 });
 /////LOGIN
 app.get('/login', function (req, res) {
