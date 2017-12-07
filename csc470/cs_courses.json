@@ -76,7 +76,7 @@
    ,"_description" : "The study of formalized database design. This course will focus on relational model design and the use of SQL. Students will use a modern relational database to implement designs and learn the basics of data management."
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC Elective"
+  { "_name" : "CSC Elective I"
    ,"_courseNumber" : "000"
    ,"_subject" : "CSC"
    ,"_preRequisites" : []
@@ -104,14 +104,14 @@
    ,"_description" : "FALL ONLY. The fundamental ideas and issues involved in programming and using parallel computers. This course will cover topics in the design, analysis, and implementation of parallel algorithms.  Environments discussed and used may include a variety of shared-memory and message passing models, cluster computing, and GPU computing.  "
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC 300+ Level Elective"
+  { "_name" : "CSC 300+ Level Elective I"
    ,"_courseNumber" : "300"
    ,"_subject" : "CSC"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC Elective"
+  { "_name" : "CSC Elective II"
    ,"_courseNumber" : "000"
    ,"_subject" : "CSC"
    ,"_preRequisites" : []
@@ -132,7 +132,7 @@
    ,"_description" : "FALL ONLY. An introduction to the software engineering process, including lifecycle phases, problem analysis, specification, project estimation and resource estimations, design, implementation, testing/maintenance, and project management. In particular, software validation and verification as well as scheduling and schedule assessment techniques will be discussed. "
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC 300+ Elective"
+  { "_name" : "CSC 300+ Elective II"
    ,"_courseNumber" : "300"
    ,"_subject" : "CSC"
    ,"_preRequisites" : []
@@ -153,21 +153,21 @@
    ,"_description" : "SPRING ONLY. A study of computer language processing through the activities of language design, specification, and translation. Computer language processing tools (compiler construction tools) will be used to demonstrate many of the concepts. The scanning, parsing, semantic analysis and code generation phases of compilation will be studied. Theoretical concepts including grammars and automata will be introduced. Programming projects will be required."
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC 300+ Elective"
+  { "_name" : "CSC 300+ Elective III"
    ,"_courseNumber" : "300"
    ,"_subject" : "CSC"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC Elective"
+  { "_name" : "CSC Elective III"
    ,"_courseNumber" : "000"
    ,"_subject" : "CSC"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC Elective"
+  { "_name" : "CSC Elective IV"
    ,"_courseNumber" : "000"
    ,"_subject" : "CSC"
    ,"_preRequisites" : []
@@ -181,14 +181,14 @@
    ,"_description" : "Practice in the skills, research, and documentation needed for the effective academic writing. Analysis of a variety of academic and non-academic texts, rhetorical structures, critical thinking, and audience will be included. "
    ,"_creditHours" : 3
   },
-  { "_name" : "Arts and Humanities Elective"
+  { "_name" : "Arts and Humanities Elective I"
    ,"_courseNumber" : "000"
    ,"_subject" : "ART"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "Arts and Humanities Elective"
+  { "_name" : "Arts and Humanities Elective II"
    ,"_courseNumber" : "000"
    ,"_subject" : "ART"
    ,"_preRequisites" : []
@@ -202,21 +202,21 @@
    ,"_description" : "Introduces the study of speech fundamentals and critical thinking through frequent public speaking practice, including setting, purpose, audience, and subject."
    ,"_creditHours" : 3
   },
-  { "_name" : "Social Science Elective"
+  { "_name" : "Social Science Elective I"
    ,"_courseNumber" : "000"
    ,"_subject" : "SOC"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "Social Science Elective"
+  { "_name" : "Social Science Elective II"
    ,"_courseNumber" : "000"
    ,"_subject" : "SOC"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "Natural Science Elective"
+  { "_name" : "Natural Science Elective I"
    ,"_courseNumber" : "000"
    ,"_subject" : "NAT"
    ,"_preRequisites" : []
@@ -237,21 +237,21 @@
    ,"_description" : "A study of descriptive statistics including graphs, measures of central tendency and variability and an introduction to probability theory, sampling and techniques of statistical inference with an emphasis on statistical applications."
    ,"_creditHours" : 3
   },
-  { "_name" : "Math Elective"
+  { "_name" : "Math Elective I"
    ,"_courseNumber" : "000"
    ,"_subject" : "MATH"
    ,"_preRequisites" : []
    ,"_description" : "Any non-required course >123 from the MATH department"
    ,"_creditHours" : 3
   },
-  { "_name" : "Math Elective"
+  { "_name" : "Math Elective II"
    ,"_courseNumber" : "000"
    ,"_subject" : "MATH"
    ,"_preRequisites" : []
    ,"_description" : "Any non-required course >123 from the MATH department"
    ,"_creditHours" : 3
   },
-  { "_name" : "Natural Science Elective"
+  { "_name" : "Natural Science Elective II "
    ,"_courseNumber" : "000"
    ,"_subject" : "NAT"
    ,"_preRequisites" : []

@@ -14,7 +14,7 @@ var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
 var fs = require('fs');
-var all_courses = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
+var all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
 
 /**
  * LIST OF ROUTS
@@ -150,15 +150,19 @@ app.get('/signup', function (req, res) {
 /////classes_left
 app.get('/classes_left', function (req, res) {
     var classes_taken = []; // setting up test data
-    for (var i; i < 5; i++){
-        classes_taken.push(all_courses[i]);
+    var classes_registered = []; // setting up test data
+    for (var i=0; i < 5; i++){
+        classes_taken.push(all_classes[i]);
     }
-    return res.render('classes_left', { all_courses: all_courses , classes_taken: classes_taken });
+    for (var i=0; i < 10; i++){
+        classes_registered.push(all_classes[i]);
+    }
+    return res.render('classes_left', { all_classes: all_classes , classes_taken: classes_taken, classes_registered: classes_registered });
 });
 
 /////schedule
 app.get('/schedule', function (req, res) {
-    return res.render('schedule', { all_courses: all_courses });
+    return res.render('schedule', { all_classes: all_classes });
 });
 
 /////MAJOR
