@@ -1,11 +1,16 @@
-<% include ./navbar %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./navbar %>
+</head>
 <body>
-<div class="main">
+	<br>
+	<br>
+	<br>
+    <div class="main">
 	<h1>TEST</h1>
-	<% for (var i=0; i < courses.length; i++){ %>
-	<tr>
-		<td><%= courses[i].name %></td>
-	</tr>
+		<% for (var i = 0; i < courses.length; i++){ %>
+		<%= courses[i].name %>
 	<% } %>
-</div>
 </body>
+

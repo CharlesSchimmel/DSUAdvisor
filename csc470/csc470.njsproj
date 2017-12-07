@@ -52,6 +52,7 @@
     <Content Include="views\profile.ejs">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\schedule.ejs" />
     <Content Include="views\signup.ejs" />
     <Content Include="views\track.ejs" />
     <TypeScriptCompile Include="app.ts" />
@@ -84,6 +85,7 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\menu.ts" />
+    <TypeScriptCompile Include="routes\schedule.ts" />
     <TypeScriptCompile Include="routes\signup.ts" />
     <TypeScriptCompile Include="routes\profile.ts" />
     <TypeScriptCompile Include="routes\login.ts" />

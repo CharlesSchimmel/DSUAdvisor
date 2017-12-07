@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * GET schedule page
  */
@@ -9,4 +9,5 @@ console.log("HII");
 router.get('/schedule', function (req, res) {
     res.render('schedule');
 });
-exports["default"] = router;
+exports.default = router;
+//# sourceMappingURL=schedule.js.map

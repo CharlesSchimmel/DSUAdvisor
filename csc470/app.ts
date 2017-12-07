@@ -138,7 +138,8 @@ app.get('/signup', function (req, res) {
 
 /////schedule
 app.get('/schedule', function (req, res) {
-    return res.render('schedule');
+    var courseobj = {name: "test",}
+    return res.render('schedule', { courses: courseobj });
 });
 
 /////MAJOR

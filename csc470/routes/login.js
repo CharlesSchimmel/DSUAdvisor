@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * GET home page.
  */
@@ -9,4 +9,5 @@ router.get('/', function (req, res) {
     console.log('logged in');
     res.render('login');
 });
-exports["default"] = router;
+exports.default = router;
+//# sourceMappingURL=login.js.map
