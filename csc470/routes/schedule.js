@@ -1,11 +1,12 @@
 "use strict";
 exports.__esModule = true;
 /*
- * GET home page.
+ * GET schedule page
  */
 var express = require("express");
 var router = express.Router();
-router.get('/', function (req, res) {
-    res.render('index', { title: 'CSC470 Application' });
+console.log("HII");
+router.get('/schedule', function (req, res) {
+    res.render('schedule');
 });
 exports["default"] = router;

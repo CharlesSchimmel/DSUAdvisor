@@ -25,6 +25,7 @@ import logout from './routes/logout';
 import login from './routes/login';
 import profile from './routes/profile';
 import signup from './routes/signup';
+import schedule from './routes/schedule';
 
 var app = express();
 
@@ -101,6 +102,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/profile', profile);
 app.use('/signup', signup);
+app.use('/schedule', schedule);
 
 
 /**
@@ -124,6 +126,11 @@ app.get('/profile', function (req, res) {
 /////SIGNUP
 app.get('/signup', function (req, res) {
     return res.render('signup');
+});
+
+/////schedule
+app.get('/schedule', function (req, res) {
+    return res.render('schedule');
 });
 
 /////MAJOR

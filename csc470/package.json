@@ -35,5 +35,8 @@
     "raw-body": "2.3.2",
     "session": "^0.1.0",
     "stylus": "0.52.4"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.56"
   }
 }

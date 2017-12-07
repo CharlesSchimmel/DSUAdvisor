@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 /**
  * IMPORTED MODULES
  */
@@ -22,6 +22,7 @@ var logout_1 = require("./routes/logout");
 var login_1 = require("./routes/login");
 var profile_1 = require("./routes/profile");
 var signup_1 = require("./routes/signup");
+var schedule_1 = require("./routes/schedule");
 var app = express();
 /**
  * SET UP VIEW ENGINE
@@ -87,14 +88,15 @@ app.use(passport.session());
 /**
  * LIST OF PAGES
  */
-app.use('/', index_1.default);
-app.use('/users', user_1.default);
-app.use('/major', major_1.default);
-app.use('/track', track_1.default);
-app.use('/login', login_1.default);
-app.use('/logout', logout_1.default);
-app.use('/profile', profile_1.default);
-app.use('/signup', signup_1.default);
+app.use('/', index_1["default"]);
+app.use('/users', user_1["default"]);
+app.use('/major', major_1["default"]);
+app.use('/track', track_1["default"]);
+app.use('/login', login_1["default"]);
+app.use('/logout', logout_1["default"]);
+app.use('/profile', profile_1["default"]);
+app.use('/signup', signup_1["default"]);
+app.use('/schedule', schedule_1["default"]);
 /**
  * PAGE REQUESTS
  */
@@ -113,6 +115,10 @@ app.get('/profile', function (req, res) {
 /////SIGNUP
 app.get('/signup', function (req, res) {
     return res.render('signup');
+});
+/////schedule
+app.get('/schedule', function (req, res) {
+    return res.render('schedule');
 });
 /////MAJOR
 app.get('/major', function (req, res) {
@@ -176,4 +182,3 @@ app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function () {
     debug('Express server listening on port ' + server.address().port);
 });
-//# sourceMappingURL=app.js.map
