@@ -181,7 +181,7 @@ app.post('/majorSubmit', function (req, res) {
 /////TRACK
 app.get('/track', function (req, res) {
     //console.log(req.body);
-    return res.render('track');
+    return res.render('track', { credits_needed: 66,} );
 });
 
 /////LOGIN

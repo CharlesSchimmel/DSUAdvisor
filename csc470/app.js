@@ -140,7 +140,6 @@ app.get('/classes_left', function (req, res) {
     }
     for (var i = 0; i < 10; i++) {
         classes_registered.push(all_classes[i]);
-        console.log(classes_registered[i]);
     }
     return res.render('classes_left', { all_classes: all_classes, classes_taken: classes_taken, classes_registered: classes_registered });
 });
@@ -161,7 +160,7 @@ app.post('/majorSubmit', function (req, res) {
 /////TRACK
 app.get('/track', function (req, res) {
     //console.log(req.body);
-    return res.render('track');
+    return res.render('track', { credits_needed: 66 });
 });
 /////LOGIN
 app.get('/login', function (req, res) {

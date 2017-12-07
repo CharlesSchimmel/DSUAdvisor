@@ -4,12 +4,14 @@
     <% include ./navbar %>
 </head>
 <body>
-<div class="main">
-		<div class="center addpadding">
-		<h1>Classes Left to Take</h1>
+	
+<div class="main" style="padding-top: 400px;">
+	<div class="addpadding" >
+		<h2>Classes Left to Take</h2>
 		<table class="table table-striped table-condensed table-hover">
 			<thead>
 				<tr>
+					<th>Class ID</th>
 					<th>Class Name</th>
 					<th>Registered</th>
 					<th>Unregistered</th>
@@ -17,11 +19,12 @@
 			<% for (var i = 0; i < all_classes.length; i++){ %>
 				<% if (classes_taken.indexOf(all_classes[i]) == -1){ %>
 				<tr> 
+					<td> <%= all_classes[i]._subject %> <%= all_classes[i]._courseNumber %> </td>
 					<td> <%= all_classes[i]._name %> </td>
 					<% if (classes_registered.indexOf(all_classes[i]) != -1){%> 
-					<td > &#10004; </td> <td></td>
+					<td > <center>&#10004; </center></td> <td></td>
 					<% } else { %>
-					<td> </td> <td > &#10004; </td>
+					<td> </td> <td > <center>&#10004; </center></td>
 					<% } %>
 				</tr>
 				<% } %>
@@ -30,4 +33,4 @@
 		</div>
 </div>
 </body>
-
+</html>
