@@ -40,6 +40,8 @@
     <Content Include="public\stylesheets\navbar.css" />
     <Content Include="public\stylesheets\signup.css" />
     <Content Include="public\stylesheets\track.css" />
+    <Content Include="views\classes_current.ejs" />
+    <Content Include="views\classes_left.ejs" />
     <Content Include="views\error.ejs">
       <SubType>Code</SubType>
     </Content>
@@ -87,6 +89,8 @@
     <TypeScriptCompile Include="public\javascripts\HandlerBase.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\classes_current.ts" />
+    <TypeScriptCompile Include="routes\classes_left.ts" />
     <TypeScriptCompile Include="routes\menu.ts" />
     <TypeScriptCompile Include="routes\schedule.ts" />
     <TypeScriptCompile Include="routes\signup.ts" />
