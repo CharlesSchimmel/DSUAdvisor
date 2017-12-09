@@ -9,31 +9,21 @@ var path = require("path");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
+var Global = require("./public/javascripts/Global");
 var fs = require('fs');
 var all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
 /**
  * Database and Sessions
  */
-var myUri = 'mongodb://localhost:27017';
+var myUri = 'mongodb://csc470';
 var promise = mongoose.connect(myUri, {
     useMongoClient: true,
 });
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
-var db = require('./db');
-//import User = require('./db/users');
-//var User = mongoose.model('User', new mongoose.Schema({
-//    userId: { type: Number, required: true, unique: true },
-//    firstName: { type: String, required: true },
-//    lastName: { type: String, required: true },
-//    major: Number,
-//    progLength: Number,
-//    userName: { type: String, required: true, unique: true },
-//    password: { type: String, required: true },
-//    classesInProgress: [],
-//    classesWaitlisted: [],
-//    classesSignedUpfor: [],
-//}));
+//var db = require('./db');
+var AdvisorUser = require("./db/users");
+var User = User = mongoose.model('User', AdvisorUser.User.userSchema);
 /**
  * LIST OF ROUTS
  */
@@ -153,19 +143,20 @@ app.get('/signup', function (req, res) {
     return res.render('signup');
 });
 app.post('/createAccount', function (req, res) {
-    //promise.then(function (db) { mongoose.connection.openUri(myUri) });
-    //var user = req.body;
-    //console.log(req.body);
-    //user["userId"] = Global.genUniqueId();
-    //console.log(user.userId.toString());
-    //console.log(user);
-    //var newUser = new User(user);
-    //console.log('User created successfully!');
-    //User.save(function (err) {
-    //    if (err) return res.redirect('/signup');
-    //    console.log('User saved successfully!');
-    //});
-    //res.redirect('/login');
+    promise.then(function (db) { mongoose.connection.openUri(myUri); });
+    var user = req.body;
+    console.log(req.body);
+    user["userId"] = Global.genUniqueId();
+    console.log(user.userId.toString());
+    console.log(user);
+    var newUser = new User(user);
+    console.log('User created successfully!');
+    User.save(function (err) {
+        if (err)
+            return res.redirect('/signup');
+        console.log('User saved successfully!');
+    });
+    res.redirect('/login');
     return res.end;
 });
 app.get('/classes_left', function (req, res) {

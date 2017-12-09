@@ -1,6 +1,7 @@
-﻿    var mongoose = require('mongoose');
-    var Schema = mongoose.Schema;
+﻿var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
+export module User {
     export var userSchema = new Schema({
         userId: { type: Number, required: true, unique: true },
         firstName: { type: String, required: true },
@@ -14,6 +15,11 @@
         classesSignedUpfor: [],
     });
 
-    export var User = mongoose.model('User', userSchema);
+    //export var User = mongoose.model('AdvisorUser', userSchema);
 
-module.exports = User;
+    //if (mongoose.models.Admin) {
+    //    var AdvisorUser = mongoose.model('AdvisorUser');
+    //} else {
+    //    var AdvisorUser = mongoose.model('AdvisorUser', userSchema);
+    //}
+}

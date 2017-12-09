@@ -19,28 +19,16 @@ var all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
 /**
  * Database and Sessions
  */
-var myUri = 'mongodb://localhost:27017';
+var myUri = 'mongodb://csc470';
 var promise = mongoose.connect(myUri, {
     useMongoClient: true,
     /* other options */
 });
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
-var db = require('./db');
-//import User = require('./db/users');
-
-//var User = mongoose.model('User', new mongoose.Schema({
-//    userId: { type: Number, required: true, unique: true },
-//    firstName: { type: String, required: true },
-//    lastName: { type: String, required: true },
-//    major: Number,
-//    progLength: Number,
-//    userName: { type: String, required: true, unique: true },
-//    password: { type: String, required: true },
-//    classesInProgress: [],
-//    classesWaitlisted: [],
-//    classesSignedUpfor: [],
-//}));
+//var db = require('./db');
+import AdvisorUser = require('./db/users');
+var User = User = mongoose.model('User', AdvisorUser.User.userSchema);
 
 /**
  * LIST OF ROUTS
@@ -175,24 +163,24 @@ app.get('/signup', function (req, res) {
 
 app.post('/createAccount', function (req, res) {
 
-    //promise.then(function (db) { mongoose.connection.openUri(myUri) });
+    promise.then(function (db) { mongoose.connection.openUri(myUri) });
 
-    //var user = req.body;
-    //console.log(req.body);
-    //user["userId"] = Global.genUniqueId();
+    var user = req.body;
+    console.log(req.body);
+    user["userId"] = Global.genUniqueId();
 
-    //console.log(user.userId.toString());
-    //console.log(user);
+    console.log(user.userId.toString());
+    console.log(user);
 
-    //var newUser = new User(user);
-    //console.log('User created successfully!');
+    var newUser = new User(user);
+    console.log('User created successfully!');
 
-    //User.save(function (err) {
-    //    if (err) return res.redirect('/signup');
-    //    console.log('User saved successfully!');
-    //});
+    User.save(function (err) {
+        if (err) return res.redirect('/signup');
+        console.log('User saved successfully!');
+    });
 
-    //res.redirect('/login');
+    res.redirect('/login');
     return res.end;
 });
 

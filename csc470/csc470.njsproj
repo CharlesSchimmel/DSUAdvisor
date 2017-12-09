@@ -131,7 +131,6 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\stylesheets\main.css" />
-    <Content Include="README.md" />
     <Content Include="views\menu.ejs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +155,6 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="db\index.js" />
     <Compile Include="public\vendor\bootstrap.min.js" />
     <Compile Include="public\vendor\jquery-2.2.3.min.js" />
     <Compile Include="public\vendor\jquery.form.min.js" />
