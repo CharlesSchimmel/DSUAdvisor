@@ -7,17 +7,22 @@ module.exports = function (app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function (req, res) {
-        res.render('index.ejs'); // load the index.ejs file
+        if (req.user) {
+            res.render('menu/menu.ejs');
+        }
+        else {
+            res.render('index.ejs', { user_isloggedin: req.isAuthenticated() }); // load the index.ejs file
+        }
     });
     // =====================================
     // MENU ================================
     // =====================================
     app.get('/menu', function (req, res) {
-        res.render('menu/menu.ejs');
+        res.render('menu/menu.ejs', { user_isloggedin: req.isAuthenticated() });
     });
     /////MAJOR
     app.get('/major', function (req, res) {
-        res.render('menu/major.ejs');
+        res.render('menu/major.ejs', { user_isloggedinoggedin: req.isAuthenticated() });
     });
     app.post('/majorSubmit', function (req, res) {
         console.log(req.body);
@@ -25,19 +30,19 @@ module.exports = function (app, passport) {
     });
     /////CLASSES CURRENT
     app.get('/classes_current', function (req, res) {
-        res.render('menu/classes_current.ejs');
+        res.render('menu/classes_current.ejs', { user_isloggedin: req.isAuthenticated() });
     });
     /////CLASSES TAKEN
     app.get('/classes_taken', function (req, res) {
-        res.render('menu/classes_taken.ejs');
+        res.render('menu/classes_taken.ejs', { user_isloggedin: req.isAuthenticated() });
     });
     /////TRACK
     app.get('/track', function (req, res) {
-        res.render('menu/track.ejs', { credits_needed: 66, });
+        res.render('menu/track.ejs', { user_isloggedin: req.isAuthenticated(), credits_needed: 66 });
     });
     /////SCHEDULE
     app.get('/schedule', function (req, res) {
-        res.render('menu/schedule.ejs');
+        res.render('menu/schedule.ejs', { user_isloggedin: req.isAuthenticated() });
     });
     // ===================================================================================================================
     // ACCOUNT MANAGMENT =================================================================================================
@@ -62,7 +67,10 @@ module.exports = function (app, passport) {
     // show the signup form
     app.get('/signup', function (req, res) {
         // render the page and pass in any flash data if it exists
-        res.render('account/signup.ejs', { message: req.flash('signupMessage') });
+        res.render('account/signup.ejs', {
+            message: req.flash('signupMessage'),
+            user_isloggedin: req.isAuthenticated()
+        });
     });
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
@@ -77,7 +85,8 @@ module.exports = function (app, passport) {
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function (req, res) {
         res.render('account/profile.ejs', {
-            user: req.user // get the user out of session and pass to template
+            user: req.user,
+            user_isloggedin: req.isAuthenticated()
         });
     });
     // =====================================
@@ -102,4 +111,3 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
-//# sourceMappingURL=routes.js.map
