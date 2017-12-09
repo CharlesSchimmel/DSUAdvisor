@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
     lastName: String,
     major: String,
     progLength: Number,
+    classesFinished: [],
     classesInProgress: [],
     classesWaitlisted: [],
     classesSignedUpfor: [],

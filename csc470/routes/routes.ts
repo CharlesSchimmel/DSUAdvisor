@@ -19,38 +19,58 @@ module.exports = function (app, passport) {
     // MENU ================================
     // =====================================
 
-    app.get('/menu', function (req, res) {
+    app.get('/menu', isLoggedIn, function (req, res) {
         res.render('menu/menu.ejs', { user_isloggedin: req.isAuthenticated() });
     });
 
     /////MAJOR
-    app.get('/major', function (req, res) {
+    app.get('/major', isLoggedIn, function (req, res) {
         res.render('menu/major.ejs', { user_isloggedinoggedin: req.isAuthenticated() });
     });
 
-    app.post('/majorSubmit', function (req, res) {
+    app.post('/majorSubmit', isLoggedIn, function (req, res) {
         console.log(req.body);
         return res.end;
     });
 
     /////CLASSES CURRENT
-    app.get('/classes_current', function (req, res) {
-        res.render('menu/classes_current.ejs', { user_isloggedin: req.isAuthenticated(), });
+    app.get('/classes/current', isLoggedIn, function (req, res) {
+        res.render('classes/current.ejs', 
+            { user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+                all_classes: all_classes
+            }
+        );
     });
 
     /////CLASSES TAKEN
-    app.get('/classes_taken', function (req, res) {
-        res.render('menu/classes_taken.ejs', { user_isloggedin: req.isAuthenticated(), });
+    app.get('/classes/taken', isLoggedIn, function (req, res) {
+        res.render('classes/taken.ejs', 
+            { user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+                all_classes: all_classes
+            }
+        );
     });
 
     /////TRACK
-    app.get('/track', function (req, res) {
-        res.render('menu/track.ejs', { user_isloggedin: req.isAuthenticated(), credits_needed: 66, });
+    app.get('/classes/track', isLoggedIn, function (req, res) {
+        res.render('classes/track.ejs', 
+            { user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+                all_classes: all_classes
+            }
+        );
     });
 
     /////SCHEDULE
-    app.get('/schedule', function (req, res) {
-        res.render('menu/schedule.ejs', { user_isloggedin: req.isAuthenticated(), } );
+    app.get('/classes/schedule', isLoggedIn, function (req, res) {
+        res.render('classes/schedule.ejs', 
+            { user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+                all_classes: all_classes
+            }
+        );
     });
 
 
@@ -86,6 +106,9 @@ module.exports = function (app, passport) {
             message: req.flash('signupMessage'),
             user_isloggedin: req.isAuthenticated() })
     });
+
+    // app.post for /classes/take that takes the class and adds it to users finished classes
+    // same for taking, registered, waitlist, and untaken
 
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
@@ -131,5 +154,8 @@ function isLoggedIn(req, res, next) {
         return next();
 
     // if they aren't redirect them to the home page
-    res.redirect('/');
+    res.redirect('/login');
 }
+
+var fs = require('fs');
+var all_classes= JSON.parse(fs.readFileSync('cs_courses.json','utf8'));
