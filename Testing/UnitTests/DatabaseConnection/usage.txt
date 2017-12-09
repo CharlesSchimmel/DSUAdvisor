@@ -1,0 +1,3 @@
+> node main
+
+Tests database connection.
