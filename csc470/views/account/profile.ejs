@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <% include ../partials/navbar %>
+  </head>
+  <body>
+    <br></br>
+    <br></br>
+    <br></br>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<div class="row">
+
+		<!-- LOCAL INFORMATION -->
+
+    <div class="text-center">
+      <div class="col-sm-6">
+			  <div class="well">
+
+					  <p>
+						  <strong>id</strong>: <%= user._id %><br></br>
+              <strong>Name</strong>: <%= user.firstName %> <%= user.lastName %><br></br>
+              <strong>Email</strong>: <%= user.email %><br></br>
+						  <strong>Password</strong>: <%= user.password %><br></br>
+              <strong>Major</strong>: <%= user.major %><br></br>
+              <strong>Program Length</strong>: <%= user.projLength %><br></br>
+					  </p>
+
+			  </div>
+      </div>
+		</div>
+
+    <div class="text-center">
+      <div class="col-sm-6">
+        <div class="well">
+          <h1>
+            <span class="fa fa-anchor"></span> Update Information
+          </h1>
+          <p>
+            <strong>Major</strong>: <%= user.major %><br></br>
+            <strong>Program Length</strong>: <%= user.projLength %><br></br>
+          </p>
+
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+</body>
+</html>

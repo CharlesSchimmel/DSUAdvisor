@@ -1,11 +1,30 @@
-﻿/*
- * GET users listing.
- */
-import express = require('express');
-const router = express.Router();
+﻿// load the things we need
+import mongoose = require('mongoose');
+import bcrypt = require('bcrypt');
 
-router.get('/', (req: express.Request, res: express.Response) => {
-    res.send("respond with a resource");
+// define the schema for our user model
+var userSchema = mongoose.Schema({
+    email: String,
+    password: String,
+    firstName: String,
+    lastName: String,
+    major: String,
+    progLength: Number,
+    classesInProgress: [],
+    classesWaitlisted: [],
+    classesSignedUpfor: [],
 });
 
-export default router;
+// methods ======================
+// generating a hash
+userSchema.methods.generateHash = function (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+userSchema.methods.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+// create the model for users and expose it to our app
+module.exports = mongoose.model('User', userSchema);
