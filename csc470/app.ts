@@ -15,6 +15,14 @@ import mongodb = require('mongodb');
 import Global = require('./public/javascripts/Global');
 var fs = require('fs');
 var all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
+var classes_taken = []; // setting up test data
+var classes_registered = []; // setting up test data
+for (var i = 0; i < 5; i++) {
+    classes_taken.push(all_classes[i]);
+}
+for (var i = 0; i < 10; i++) {
+    classes_registered.push(all_classes[i]);
+}
 
 /**
  * Database and Sessions
@@ -151,11 +159,6 @@ app.get('/profile', function (req, res) {
     });
 });
 
-/////classes_current
-app.get('/classes_current', function (req, res) {
-    return res.render('classes_current');
-});
-
 /////SIGNUP
 app.get('/signup', function (req, res) {
     return res.render('signup');
@@ -185,15 +188,11 @@ app.post('/createAccount', function (req, res) {
 });
 
 
+app.get('/classes_current', function (req, res) {
+    return res.render('classes_current', { all_classes: all_classes, classes_taken: classes_taken, classes_registered: classes_registered });
+});
+
 app.get('/classes_left', function (req, res) {
-    var classes_taken = []; // setting up test data
-    var classes_registered = []; // setting up test data
-    for (var i = 0; i < 5; i++) {
-        classes_taken.push(all_classes[i]);
-    }
-    for (var i = 0; i < 10; i++) {
-        classes_registered.push(all_classes[i]);
-    }
     return res.render('classes_left', { all_classes: all_classes, classes_taken: classes_taken, classes_registered: classes_registered });
 });
 
@@ -231,13 +230,28 @@ app.get('/track', function (req, res) {
 app.get('/login',
     function (req, res) {
         res.render('login');
-    });
+});
 
 app.post('/login',
-    passport.authenticate('local', { failureRedirect: '/login' }),
+    passport.authenticate('local', { 
+        successRedirect: '/loginSuccess',
+        failureRedirect: '/login',
+        failureFlash: true
+    }),
     function (req, res) {
         res.redirect('/');
-    });
+    }
+);
+
+app.get('/loginSuccess', function (req, res){
+    console.log("login_success!!");
+    res.redirect ('/home', { message: "Login Successful!"});
+});
+
+app.get('/loginFail', function (req, res){
+    console.log("login_fail!!");
+    res.redirect ('/login', { message: "Login failed. Please try again."} );
+});
 
 
 /////LOGOUT
