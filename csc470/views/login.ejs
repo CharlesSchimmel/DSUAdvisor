@@ -8,6 +8,9 @@
 <div class="main">
 	<div class="center addpadding">
 		<h2>Login</h2>
+		<% if (typeof message !== "undefined" ) {%>
+		<h3> <%= message %>
+		<% } %>
 		<form action="/login" method="post">
 			<div class="form-group">
 				<label for="firstname">Username</label>
