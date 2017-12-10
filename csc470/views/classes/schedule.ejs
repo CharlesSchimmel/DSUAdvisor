@@ -4,15 +4,32 @@
     <% include ../partials/navbar %>
 </head>
 <body>
-    <div class="main">
-    <div class="container-fluid">
-	<h1>Your Current Classes</h1>
-	<ul>
-		<% var inProg = user.classesInProgress %>
-		<% for (var i = 0; i < inProg.length; i++){ %>
-		<li> <%= inProg[i]._name %> </li>
-		<% } %>
-	</ul>
+    <br><br>
+<div class="">
 
+	<div class="page-header text-center">
+		<h1><span class="fa"></span>Current Schedule</h1>
+	</div>
+
+	<% for (var i=0; i<user.classesInProgress.length; i++) { %>
+	<div class="container well">
+		<div class="row">
+			<div class="col-md-4">
+				<h4><%= user.classesInProgress[i]._name %></h4>
+			</div> <!--- .col ---!>
+			<div class="col-md-3 pull-right">
+				<h4 class="text-right"><%= user.classesInProgress[i]._subject %> <%=user.classesInProgress[i]._courseNumber %></h4>
+			</div> <!--- .col ---!>
+		</div> <!--- .row ---!>
+			<%= user.classesInProgress[i]._description %>
+		<div class="row">
+		</div><!-- row --> 
+	</div> <!--- .container ---!>
+	<% } %>
+	<div class="container">
+			<input type="button" class="btn btn-primary pull-right col-md-2" onClick="window.print()" value="Print">
+	</div>
+
+</div>
 </body>
 

@@ -12,15 +12,16 @@
 	<thead>
 		<th>Class ID</th>
 		<th>Class Name</th>
-		<th>Status</th>
+		<th class="pull-right">Status</th>
 	</thead>
+
 	<% for (var i = 0; i < classes_needed.length; i++){ %> <tr>
 		<% var course_json = JSON.stringify(classes_needed[i]) %>
 		<td><%= classes_needed[i]._subject %> <%= classes_needed[i]._courseNumber %></td>
 		<td><%= classes_needed[i]._name %></td>
 		<td>
 			<div class="dropdown">
-				<button class="btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
+				<button class="pull-right btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
 					Still Needed
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -61,7 +62,7 @@
 		<td><%= user.classesFinished[i]._name %></td>
 		<td>
 			<div class="dropdown">
-				<button class="btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
+				<button class="pull-right btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
 					Completed
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -102,8 +103,90 @@
 		<td><%= user.classesInProgress[i]._name %></td>
 		<td>
 			<div class="dropdown">
-				<button class="btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
+				<button class="pull-right btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
 					In Progress
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<h6 class="dropdown-header">Mark as...</h6>
+					<li>
+						<form method="post" action="/classes/completed" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Completed</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/take" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >In Progress</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/register" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Registered</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/waitlist" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Waitlisted</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/untake" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Still Needed</button>
+						</form>
+					</li>
+				</div>
+			</div>
+		</td>
+	</tr><% } %>
+
+	<% for (var i=0; i < user.classesWaitlisted.length; i++){ %><tr>
+		<% var course_json = JSON.stringify(user.classesWaitlisted[i]) %>
+		<td><%= user.classesWaitlisted[i]._subject %> <%= user.classesWaitlisted[i]._courseNumber %></td>
+		<td><%= user.classesWaitlisted[i]._name %></td>
+		<td>
+			<div class="dropdown">
+				<button class="pull-right btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
+					Waitlisted
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<h6 class="dropdown-header">Mark as...</h6>
+					<li>
+						<form method="post" action="/classes/completed" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Completed</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/take" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >In Progress</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/register" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Registered</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/waitlist" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Waitlisted</button>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="/classes/untake" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Still Needed</button>
+						</form>
+					</li>
+				</div>
+			</div>
+		</td>
+	</tr><% } %>
+
+	<% for (var i=0; i < user.classesSignedUpfor.length; i++){ %><tr>
+		<% var course_json = JSON.stringify(user.classesSignedUpfor[i]) %>
+		<td><%= user.classesSignedUpfor[i]._subject %> <%= user.classesSignedUpfor[i]._courseNumber %></td>
+		<td><%= user.classesSignedUpfor[i]._name %></td>
+		<td>
+			<div class="dropdown">
+				<button class="pull-right btn btn-secondary btn-sm dropdown-toggle" type=button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopu="true" aria-expanded="false">
+					Registered
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<h6 class="dropdown-header">Mark as...</h6>
