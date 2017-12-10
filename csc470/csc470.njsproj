@@ -34,7 +34,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="old_app.txt" />
     <Content Include="public\images\dropdown.png" />
     <Content Include="public\json\cs_courses.json">
       <SubType>Code</SubType>

@@ -12,9 +12,17 @@ module.exports = function (app, passport) {
     // =====================================
     app.get('/', function (req, res) {
         if (req.user){
-            res.render('menu/menu.ejs')
+            res.render('menu/menu.ejs',
+                {
+                    user_isloggedin: req.isAuthenticated(),
+                    user: req.user,
+                });
         } else {
-            res.render('index.ejs', { user_isloggedin: req.isAuthenticated() } ); // load the index.ejs file
+            res.render('index.ejs',
+                {
+                    user_isloggedin: req.isAuthenticated(),
+                    user: req.user,
+                } );
         }
     });
 
@@ -24,9 +32,17 @@ module.exports = function (app, passport) {
 
     app.get('/menu', isLoggedIn, function (req, res) {
         if (req.user) {
-            res.render('menu/menu.ejs')
+            res.render('menu/menu.ejs',
+                {
+                    user_isloggedin: req.isAuthenticated(),
+                    user: req.user,
+                });
         } else {
-            res.render('index.ejs', { user_isloggedin: req.isAuthenticated() }); // load the index.ejs file
+            res.render('index.ejs',
+                {
+                    user_isloggedin: req.isAuthenticated(),
+                    user: req.user,
+                });
         }
     });
 
