@@ -1,4 +1,7 @@
-﻿// app/routes/routes.ts
+﻿//setup
+import func = require('./../public/javascripts/requestFunctions');
+
+//module
 module.exports = function (app, passport) {
     // ===================================================================================================================
     // MAIN SITE NAVIGATION ==============================================================================================
@@ -73,35 +76,65 @@ module.exports = function (app, passport) {
     // "In Progress"
     app.post('/classes/take', function(req,res){
         req.user.classesInProgress.push(JSON.parse(req.body.mark_taken));
-        req.user.save();
+
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+
         res.redirect('/classes/current');
     });
 
     // "Still Needed"
     app.post('/classes/untake', function (req,res){
-        untakeClass(req.user, JSON.parse(req.body.mark_taken));
-        req.user.save();
+        func.untakeClass(req.user, JSON.parse(req.body.mark_taken));
+
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+
         res.redirect('/classes/current');
     });
 
     // "Completed"
     app.post('/classes/completed', function(req,res){
         req.user.classesFinished.push(JSON.parse(req.body.mark_taken));
-        req.user.save();
+
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+
         res.redirect('/classes/current');
     });
 
     // "Waitlisted"
     app.post('/classes/waitlist', function(req,res){
         req.user.classesWaitlisted.push(JSON.parse(req.body.mark_taken));
-        req.user.save();
+
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+
         res.redirect('/classes/current');
     });
 
     // "Registered"
     app.post('/classes/register', function(req,res){
         req.user.classesSignedUpfor.push(JSON.parse(req.body.mark_taken));
-        req.user.save();
+
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+
         res.redirect('/classes/current');
     });
 
@@ -215,43 +248,4 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/login');
-}
-
-var fs = require('fs');
-var all_classes= JSON.parse(fs.readFileSync('cs_courses.json','utf8'));
-
-function calcCreditsLeft(user){
-    var count=0;
-    var finishedNames = user.classesFinished.map(getName);
-    for (var i=0; i<all_classes; i++){
-        if (finishedNames.indexOf(all_classes[i]._name) === -1){
-            count += all_classes[i]._creditHours;
-        }
-    }
-    return count;
-}
-
-function getName (c){ return c._name; }
-function calcClassesNeeded(user){
-    var classesNeeded=[];
-    var notNeededClasses = user.classesFinished.concat(user.classesInProgress).concat(user.classesWaitlisted).concat(user.classesSignedUpfor);
-    var names = notNeededClasses.map(getName);
-    for (var i=0; i<all_classes.length; i++){
-        if (names.indexOf(all_classes[i]._name) === -1){
-            classesNeeded.push(all_classes[i]);
-        }
-    }
-    return classesNeeded;
-}
-
-function untakeClass(user,aClass){
-    var index = user.classesFinished.indexOf(aClass);
-    if (index !== -1){ user.classesFinished.splice(index,1) }
-    index = user.classesInProgress.indexOf(aClass);
-    if (index !== -1){ user.classesInProgress.splice(index,1) }
-    index = user.classesWaitlisted.indexOf(aClass);
-    if (index !== -1){ user.classesWaitlisted.splice(index,1) }
-    index = user.classesSignedUpfor.indexOf(aClass);
-    if (index !== -1){ user.classesSignedUpfor.splice(index,1) }
-    user.save();
 }
