@@ -111,26 +111,29 @@ module.exports = function (app, passport) {
     //
     // app.post for /classes/take that takes the class and adds it to users finished classes
     // same for taking, registered, waitlist, and untaken
-    //
+    // "In Progress"
     app.post('/classes/take', function (req, res) {
-        req.user.classesFinished.push(req.body.mark_taken);
-        console.log("received classes/take post with class:");
-        console.log(req.body.mark_taken);
-        for (var i = 0; i < req.user.classesFinished.length; i++) {
-            console.log(req.user.classesFinished[i]);
-        }
+        req.user.classesInProgress.push(req.body.mark_taken);
         res.redirect('/classes/current');
     });
+    // "Still Needed"
     app.post('/classes/untake', function (req, res) {
+        untakeClass(req.user, req.body.mark_taken);
         res.redirect('/classes/current');
     });
+    // "Completed"
     app.post('/classes/completed', function (req, res) {
+        req.user.classesFinished.push(req.body.mark_taken);
         res.redirect('/classes/current');
     });
+    // "Waitlisted"
     app.post('/classes/waitlist', function (req, res) {
+        req.user.classesWaitlisted.push(req.body.mark_taken);
         res.redirect('/classes/current');
     });
+    // "Registered"
     app.post('/classes/register', function (req, res) {
+        req.user.classesSignedUpfor.push(req.body.mark_taken);
         res.redirect('/classes/current');
     });
     // ===================================================================================================================
@@ -158,4 +161,22 @@ function calcCreditsLeft(user) {
         }
     }
     return count;
+}
+function untakeClass(user, aClass) {
+    var index = user.classesFinished.indexOf(aClass);
+    if (index !== -1) {
+        user.classesFinished.splice(index, 1);
+    }
+    index = user.classesInProgress.indexOf(aClass);
+    if (index !== -1) {
+        user.classesInProgress.splice(index, 1);
+    }
+    index = user.classesWaitlisted.indexOf(aClass);
+    if (index !== -1) {
+        user.classesWaitlisted.splice(index, 1);
+    }
+    index = user.classesSignedUpfor.indexOf(aClass);
+    if (index !== -1) {
+        user.classesSignedUpfor.splice(index, 1);
+    }
 }

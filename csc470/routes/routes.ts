@@ -144,7 +144,7 @@ module.exports = function (app, passport) {
 
     // "Still Needed"
     app.post('/classes/untake', function (req,res){
-        untakeClass(req.body.mark_taken);
+        untakeClass(req.user, req.body.mark_taken);
 
         res.redirect('/classes/current');
     });
@@ -200,12 +200,12 @@ function calcCreditsLeft(user){
     return count;
 }
 function untakeClass(user,aClass){
-    var index = req.user.classesFinished.indexOf(aClass);
-    if (index !== -1){ req.user.classesFinished.splice(index,1) }
-    index = req.user.classesInProgress.indexOf(aClass);
-    if (index !== -1){ req.user.classesInProgress.splice(index,1) }
-    index = req.user.classesWaitlisted.indexOf(aClass);
-    if (index !== -1){ req.user.classesWaitlisted.splice(index,1) }
-    index = req.user.classesSignedUpfor.indexOf(aClass);
-    if (index !== -1){ req.user.classesSignedUpfor.splice(index,1) }
+    var index = user.classesFinished.indexOf(aClass);
+    if (index !== -1){ user.classesFinished.splice(index,1) }
+    index = user.classesInProgress.indexOf(aClass);
+    if (index !== -1){ user.classesInProgress.splice(index,1) }
+    index = user.classesWaitlisted.indexOf(aClass);
+    if (index !== -1){ user.classesWaitlisted.splice(index,1) }
+    index = user.classesSignedUpfor.indexOf(aClass);
+    if (index !== -1){ user.classesSignedUpfor.splice(index,1) }
 }
