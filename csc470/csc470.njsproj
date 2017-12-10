@@ -46,6 +46,7 @@
     <Content Include="public\stylesheets\node-loginStyle.styl" />
     <Content Include="public\stylesheets\signup.css" />
     <Content Include="public\stylesheets\track.css" />
+    <Content Include="views\account\signup2.ejs" />
     <Content Include="views\classes\current.ejs" />
     <Content Include="views\classes\schedule.ejs" />
     <Content Include="views\classes\taken.ejs" />
