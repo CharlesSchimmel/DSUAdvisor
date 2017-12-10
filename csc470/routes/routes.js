@@ -84,27 +84,6 @@ module.exports = function (app, passport) {
             user_isloggedin: req.isAuthenticated()
         });
     });
-    // app.post for /classes/take that takes the class and adds it to users finished classes
-    // same for taking, registered, waitlist, and untaken
-    //
-    app.post('/classes/take', function (req, res) {
-        req.user.classesFinished.push(req.body.mark_taken);
-        console.log("received classes/take post with class:");
-        console.log(req.body.mark_taken);
-        for (var i = 0; i < req.user.classesFinished.length; i++) {
-            console.log(req.user.classesFinished[i]);
-        }
-        res.redirect('/classes/current');
-    });
-    app.post('/classes/untake', function (req, res) {
-        res.redirect('/classes/current.ejs');
-    });
-    app.post('/classes/waitlist', function (req, res) {
-        res.redirect('/classes/current.ejs');
-    });
-    app.post('/classes/register', function (req, res) {
-        res.redirect('/classes/current.ejs');
-    });
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/profile',
@@ -128,6 +107,31 @@ module.exports = function (app, passport) {
     app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
+    });
+    //
+    // app.post for /classes/take that takes the class and adds it to users finished classes
+    // same for taking, registered, waitlist, and untaken
+    //
+    app.post('/classes/take', function (req, res) {
+        req.user.classesFinished.push(req.body.mark_taken);
+        console.log("received classes/take post with class:");
+        console.log(req.body.mark_taken);
+        for (var i = 0; i < req.user.classesFinished.length; i++) {
+            console.log(req.user.classesFinished[i]);
+        }
+        res.redirect('/classes/current');
+    });
+    app.post('/classes/untake', function (req, res) {
+        res.redirect('/classes/current');
+    });
+    app.post('/classes/completed', function (req, res) {
+        res.redirect('/classes/current');
+    });
+    app.post('/classes/waitlist', function (req, res) {
+        res.redirect('/classes/current');
+    });
+    app.post('/classes/register', function (req, res) {
+        res.redirect('/classes/current');
     });
     // ===================================================================================================================
     // ERROR =============================================================================================================

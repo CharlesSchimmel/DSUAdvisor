@@ -24,21 +24,29 @@
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<h6 class="dropdown-header">Mark as...</h6>
 					<li>
-						<form method="post" action="/classes/take" class="inline">
-						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Taken</button>
+						<form method="post" action="/classes/completed" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Completed</button>
 						</form>
 					</li>
 					<li>
-						<button class="btn dropdown-item" href="#">Taking</button>
+						<form method="post" action="/classes/take" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >In Progress</button>
+						</form>
 					</li>
 					<li>
-						<button class="btn dropdown-item" href="#">Registered</button>
+						<form method="post" action="/classes/register" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Registered</button>
+						</form>
 					</li>
 					<li>
-						<button class="btn dropdown-item" href="#">Waitlisted</button>
+						<form method="post" action="/classes/waitlist" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Waitlisted</button>
+						</form>
 					</li>
 					<li>
-						<button class="btn dropdown-item" href="#">Still Needed</button>
+						<form method="post" action="/classes/untake" class="inline">
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Still Needed</button>
+						</form>
 					</li>
 				</div>
 			</div>
