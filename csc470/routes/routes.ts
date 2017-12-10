@@ -68,7 +68,6 @@ module.exports = function (app, passport) {
         res.render('classes/schedule.ejs', 
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
-                all_classes: all_classes
             }
         );
     });

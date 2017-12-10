@@ -4,13 +4,10 @@
     <% include ../partials/navbar %>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
     <div class="main">
-	<h1>TEST</h1>
+	<h1>Your Current Classes</h1>
 	<ul>
-		<% for (var i = 0; i < all_classes.length; i++){ %>
+		<% for (var i = 0; i < user.classesInProgress.length; i++){ %>
 		<li> <%= all_classes[i]._name %> </li>
 		<% } %>
 	</ul>

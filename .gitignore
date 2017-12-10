@@ -2,3 +2,4 @@ node_module/
 node_modules/
 test/
 package-lock.json
+*.sha1

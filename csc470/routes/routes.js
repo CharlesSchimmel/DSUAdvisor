@@ -46,14 +46,13 @@ module.exports = function (app, passport) {
     app.get('/classes/track', isLoggedIn, function (req, res) {
         res.render('classes/track.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            credits_left: calcCreditsLeft(req.user),
+            credits_left: calcCreditsLeft(req.user)
         });
     });
     /////SCHEDULE
     app.get('/classes/schedule', isLoggedIn, function (req, res) {
         res.render('classes/schedule.ejs', { user_isloggedin: req.isAuthenticated(),
-            user: req.user,
-            all_classes: all_classes
+            user: req.user
         });
     });
     // ===================================================================================================================
@@ -180,4 +179,3 @@ function untakeClass(user, aClass) {
         user.classesSignedUpfor.splice(index, 1);
     }
 }
-//# sourceMappingURL=routes.js.map

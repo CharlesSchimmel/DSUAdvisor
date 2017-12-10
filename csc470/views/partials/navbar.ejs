@@ -31,11 +31,11 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<% if (typeof user_isloggedin !== "undefined" && user_isloggedin === true) { %>
-				<li><a href="profile"><span class="glyphicon glyphicon-user"></span> Account</a></li>
-				<li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+				<li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Account</a></li>
+				<li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
 				<% } else {%>
-				<li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				<% } %>
 			</ul>
 		</div>
