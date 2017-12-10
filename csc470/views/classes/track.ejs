@@ -15,7 +15,7 @@
 		<% } else { %>
 		<h3> BEHIND TRACK </h4>
 		<% } %>
-		<p style="margin-top: 10px;" class="center"><% if (credits_left >= 0){ %> <%= credits_left %> <% } else { %> Zero <% } %> credits are currently unfinished.<p>
+		<p style="margin-top: 10px;" class="center"><% if (credits_left > 0){ %> <%= credits_left %> <% } else { %> Zero <% } %> credits are currently unfinished.<p>
 		<p class="center">At 15 credits/semester, you have <%= aproxSemesters %> semesters remaining.<p>
 		<a type="button" class="btn btn-primary" href="/classes/current">Current Status of All Classes</button>
 	</div>

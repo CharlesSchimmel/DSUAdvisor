@@ -15,7 +15,7 @@ exports.all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
 function calcCreditsLeft(user) {
     var count = 0;
     var finishedNames = user.classesFinished.map(getName);
-    for (var i = 0; i < exports.all_classes; i++) {
+    for (var i = 0; i < exports.all_classes.length; i++) {
         if (finishedNames.indexOf(exports.all_classes[i]._name) === -1) {
             count += exports.all_classes[i]._creditHours;
         }

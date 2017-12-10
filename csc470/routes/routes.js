@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
     // MENU ================================
     // =====================================
     app.get('/menu', isLoggedIn, function (req, res) {
-        res.render('menu/menu.ejs', { user_isloggedin: req.isAuthenticated() });
+        res.render('menu/menu.ejs', { user: req.user, user_isloggedin: req.isAuthenticated() });
     });
     /////MAJOR
     app.get('/major', isLoggedIn, function (req, res) {

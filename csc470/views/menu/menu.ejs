@@ -9,6 +9,7 @@
 <div class="main">
 	<div class="center addpadding">
 		<h2>Menu</h2>
+		<h3>Welcome back <%= user.firstName %> <%= user.lastName %>
 		<!-- show any messages that come back with authentication -->
 		<% if (typeof message !== "undefined") { %>
 			<div class="alert alert-danger"><%= message %></div>
