@@ -5,6 +5,7 @@ import express = require('express');
 import session = require('express-session');
 import path = require('path');
 import ejs = require('ejs');
+import http = require('http'); // maybe not needed
 import mongoose = require('mongoose');
 import passport = require('passport');
 import flash = require('connect-flash');
