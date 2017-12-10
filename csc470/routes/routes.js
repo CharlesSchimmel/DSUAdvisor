@@ -88,9 +88,12 @@ module.exports = function (app, passport) {
     // same for taking, registered, waitlist, and untaken
     //
     app.post('/classes/take', function (req, res) {
-        req.user.classesFinished.push(req.body.mark_taken._name);
+        req.user.classesFinished.push(req.body.mark_taken);
         console.log("received classes/take post with class:");
-        console.log(req.body.mark_taken._name);
+        console.log(req.body.mark_taken);
+        for (var i = 0; i < req.user.classesFinished.length; i++) {
+            console.log(req.user.classesFinished[i]);
+        }
         res.redirect('/classes/current');
     });
     app.post('/classes/untake', function (req, res) {

@@ -13,6 +13,7 @@
 		<th>Status</th>
 	</thead>
 	<% for (var i = 0; i < all_classes.length; i++){ %> <tr>
+		<% var course_json = JSON.stringify(all_classes[i]) %>
 		<td><%= all_classes[i]._subject %> <%= all_classes[i]._courseNumber %></td>
 		<td><%= all_classes[i]._name %></td>
 		<td>
@@ -24,19 +25,30 @@
 					<h6 class="dropdown-header">Mark as...</h6>
 					<li>
 						<form method="post" action="/classes/take" class="inline">
-							<input type="hidden" name="mark_taken" value="<% all_classes[i] %>">
-							<button type="submit" name="mark_taken" value="<%= all_classes[i] %>" class="btn dropdown-item" >Taken</button>
+						<button type="submit" name="mark_taken" value="<%= course_json %>" class="btn dropdown-item" >Taken</button>
 						</form>
 					</li>
-					<li><button class="btn dropdown-item" href="#">Taking</button></li>
-					<li><button class="btn dropdown-item" href="#">Registered</button></li>
-					<li><button class="btn dropdown-item" href="#">Waitlisted</button></li>
-					<li><button class="btn dropdown-item" href="#">Still Needed</button></li>
+					<li>
+						<button class="btn dropdown-item" href="#">Taking</button>
+					</li>
+					<li>
+						<button class="btn dropdown-item" href="#">Registered</button>
+					</li>
+					<li>
+						<button class="btn dropdown-item" href="#">Waitlisted</button>
+					</li>
+					<li>
+						<button class="btn dropdown-item" href="#">Still Needed</button>
+					</li>
 				</div>
 			</div>
 		</td>
 	</tr><% } %>
+
 </table>
+	<% for (var i=0; i < user.classesFinished.length; i++){ %>
+	<%= user.classesFinished[i] %>
+	<% } %>
 </div>
 </div>
 </div>
