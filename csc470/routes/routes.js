@@ -54,8 +54,8 @@ module.exports = function (app, passport) {
     app.get('/classes/current', isLoggedIn, function (req, res) {
         res.render('classes/current.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            all_classes: all_classes,
-            classes_needed: calcClassesNeeded(req.user),
+            all_classes: func.all_classes,
+            classes_needed: func.calcClassesNeeded(req.user),
             title: "Current Classes"
         });
     });
@@ -116,7 +116,7 @@ module.exports = function (app, passport) {
     app.get('/classes/taken', isLoggedIn, function (req, res) {
         res.render('classes/taken.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            classes_needed: calcClassesNeeded(req.user),
+            classes_needed: func.calcClassesNeeded(req.user),
             title: "Classes Remaining"
         });
     });
@@ -124,7 +124,7 @@ module.exports = function (app, passport) {
     app.get('/classes/track', isLoggedIn, function (req, res) {
         res.render('classes/track.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            credits_left: calcCreditsLeft(req.user),
+            credits_left: func.calcCreditsLeft(req.user),
             title: "Track Classes"
         });
     });
