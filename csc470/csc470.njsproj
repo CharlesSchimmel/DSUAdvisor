@@ -34,7 +34,11 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="old_app.txt" />
     <Content Include="public\images\dropdown.png" />
+    <Content Include="public\json\cs_courses.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\stylesheets\index.css" />
     <Content Include="public\stylesheets\login.css" />
     <Content Include="public\stylesheets\major.css" />
@@ -52,8 +56,8 @@
     <Content Include="views\error.ejs" />
     <Content Include="views\menu\major.ejs" />
     <Content Include="views\menu\menu.ejs" />
+    <Content Include="views\menu\status.ejs" />
     <Content Include="views\partials\navbar.ejs" />
-    <Content Include="views\menu\schedule.ejs" />
     <Content Include="views\menu\track.ejs" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="config\database.ts">
@@ -62,13 +66,14 @@
     <TypeScriptCompile Include="config\passport.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="old_app.txt" />
+    <TypeScriptCompile Include="public\javascripts\courseParse.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\index.ts" />
     <TypeScriptCompile Include="routes\routes.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\user.ts" />
-    <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
@@ -78,6 +83,7 @@
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
+    <Folder Include="public\json\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />

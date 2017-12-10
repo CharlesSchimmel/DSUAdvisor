@@ -1,3 +1,6 @@
 C:\Users\helene\Desktop\csc470new\csc470\obj\Debug\csc470.njsprojResolveAssemblyReference.cache
 C:\Users\helene\Desktop\csc470new\csc470\obj\Debug\csc470.njsproj.CoreCompileInputs.cache
 C:\Users\helene\Desktop\csc470new\csc470\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\helene\Desktop\csc470\csc470\obj\Debug\csc470.njsprojResolveAssemblyReference.cache
+C:\Users\helene\Desktop\csc470\csc470\obj\Debug\csc470.njsproj.CoreCompileInputs.cache
+C:\Users\helene\Desktop\csc470\csc470\bin\Microsoft.NodejsTools.WebRole.dll

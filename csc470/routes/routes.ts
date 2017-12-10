@@ -1,4 +1,7 @@
-﻿// app/routes/routes.ts
+﻿import fs = require('fs');
+import Parse = require('../public/javascripts/courseParse');
+
+
 module.exports = function (app, passport) {
     // ===================================================================================================================
     // MAIN SITE NAVIGATION ==============================================================================================
@@ -27,15 +30,17 @@ module.exports = function (app, passport) {
         console.log(req.body);
         return res.end;
     });
-
+    
     /////CLASSES CURRENT
     app.get('/classes_current', function (req, res) {
-        res.render('menu/classes_current.ejs');
+        var all_classes = Parse.parseCourses('./public/json/cs_courses.json');
+        res.render('menu/classes_current.ejs', { all_classes: all_classes, classes_taken: all_classes, classes_registered: all_classes });
     });
 
-    /////CLASSES TAKEN
-    app.get('/classes_taken', function (req, res) {
-        res.render('menu/classes_taken.ejs');
+    /////CLASSES LEFT
+    app.get('/classes_left', function (req, res) {
+        var all_classes = Parse.parseCourses('./public/json/cs_courses.json');
+        res.render('menu/classes_taken.ejs', { all_classes: all_classes, classes_taken: all_classes, classes_registered: all_classes });
     });
 
     /////TRACK
@@ -43,9 +48,9 @@ module.exports = function (app, passport) {
         res.render('menu/track.ejs', { credits_needed: 66, });
     });
 
-    /////SCHEDULE
-    app.get('/schedule', function (req, res) {
-        res.render('menu/schedule.ejs');
+    /////STATUS
+    app.get('/status', function (req, res) {
+        res.render('menu/status.ejs');
     });
 
 
