@@ -55,52 +55,50 @@ module.exports = function (app, passport) {
         res.render('classes/current.ejs', 
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
-                all_classes: req.user.classesInProgress,
-                classesWaitlisted: req.user.classesWaitlisted,
-                classesSignedUpfor: req.user.classesSignedUpfor,
+                all_classes: all_classes,
+                classes_needed: calcClassesNeeded(req.user),
             }
         );
     });
 
-    //UPDATE CLASS STATUSES
+    /////CLASSES CURRENT POSTS
     // app.post for /classes/take that takes the class and adds it to users finished classes
     // same for taking, registered, waitlist, and untaken
 
     // "In Progress"
-    app.post('/classes/take', function (req, res) {
-        req.user.classesInProgress.push(req.body.mark_taken);
+    app.post('/classes/take', function(req,res){
+        req.user.classesInProgress.push(JSON.parse(req.body.mark_taken));
         req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Still Needed"
-    app.post('/classes/untake', function (req, res) {
-        untakeClass(req.user, req.body.mark_taken);
+    app.post('/classes/untake', function (req,res){
+        untakeClass(req.user, JSON.parse(req.body.mark_taken));
         req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Completed"
-    app.post('/classes/completed', function (req, res) {
-        req.user.classesFinished.push(req.body.mark_taken);
+    app.post('/classes/completed', function(req,res){
+        req.user.classesFinished.push(JSON.parse(req.body.mark_taken));
         req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Waitlisted"
-    app.post('/classes/waitlist', function (req, res) {
-        req.user.classesWaitlisted.push(req.body.mark_taken);
+    app.post('/classes/waitlist', function(req,res){
+        req.user.classesWaitlisted.push(JSON.parse(req.body.mark_taken));
         req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Registered"
-    app.post('/classes/register', function (req, res) {
-        req.user.classesSignedUpfor.push(req.body.mark_taken);
+    app.post('/classes/register', function(req,res){
+        req.user.classesSignedUpfor.push(JSON.parse(req.body.mark_taken));
         req.user.save();
         res.redirect('/classes/current');
     });
-
     /////CLASSES TAKEN
     app.get('/classes/taken', isLoggedIn, function (req, res) {
         res.render('classes/taken.ejs', 
@@ -221,6 +219,22 @@ function calcCreditsLeft(user){
     }
     return count;
 }
+
+function calcClassesNeeded(user){
+    var getName = function(c){ return c._name; }
+    var classesNeeded=[];
+    var notNeededClasses = user.classesFinished.concat(user.classesInProgress).concat(user.classesWaitlisted).concat(user.classesSignedUpfor);
+    var names = notNeededClasses.map(getName);
+    console.log(names);
+    for (var i=0; i<all_classes.length; i++){
+        if (names.indexOf(all_classes[i]._name) === -1){
+            classesNeeded.push(all_classes[i]);
+        }
+    }
+    console.log(classesNeeded);
+    return classesNeeded;
+}
+
 function untakeClass(user,aClass){
     var index = user.classesFinished.indexOf(aClass);
     if (index !== -1){ user.classesFinished.splice(index,1) }
@@ -230,4 +244,5 @@ function untakeClass(user,aClass){
     if (index !== -1){ user.classesWaitlisted.splice(index,1) }
     index = user.classesSignedUpfor.indexOf(aClass);
     if (index !== -1){ user.classesSignedUpfor.splice(index,1) }
+    user.save();
 }
