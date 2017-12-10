@@ -9,7 +9,7 @@ module.exports = function (app, passport) {
     // =====================================
     app.get('/', function (req, res) {
         if (req.user){
-            res.render('menu/menu.ejs')
+            res.redirect('/menu')
         } else {
             res.render('index.ejs', { user_isloggedin: req.isAuthenticated() } ); // load the index.ejs file
         }
@@ -20,11 +20,7 @@ module.exports = function (app, passport) {
     // =====================================
 
     app.get('/menu', isLoggedIn, function (req, res) {
-        if (req.user) {
-            res.render('menu/menu.ejs')
-        } else {
-            res.render('index.ejs', { user_isloggedin: req.isAuthenticated() }); // load the index.ejs file
-        }
+            res.render('menu/menu.ejs', { user_isloggedin: req.isAuthenticated() });
     });
 
     /////MAJOR
@@ -33,12 +29,12 @@ module.exports = function (app, passport) {
             {
                 user_isloggedin: req.isAuthenticated(),
                 user: req.user,
+                title: "Change Major"
             }
         );
     });
 
     app.post('/majorSubmit', isLoggedIn, function (req, res) {
-        //console.log(req.body.toString());
         req.user.major = req.body.major;
         req.user.save(function (err) {
             if (err)
@@ -49,7 +45,6 @@ module.exports = function (app, passport) {
     });
 
     app.post('/lengthSubmit', isLoggedIn, function (req, res) {
-        //console.log(req.body.toString());
         req.user.progLength = req.body.progLength;
         req.user.save(function (err) {
             if (err)
@@ -66,6 +61,7 @@ module.exports = function (app, passport) {
                 user: req.user,
                 all_classes: all_classes,
                 classes_needed: calcClassesNeeded(req.user),
+                title: "Current Classes"
             }
         );
     });
@@ -108,12 +104,14 @@ module.exports = function (app, passport) {
         req.user.save();
         res.redirect('/classes/current');
     });
-    /////CLASSES TAKEN
+
+    /////CLASSES NEEDED
     app.get('/classes/taken', isLoggedIn, function (req, res) {
         res.render('classes/taken.ejs', 
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
-                all_classes: req.user.classesFinished,
+                classes_needed: calcClassesNeeded(req.user),
+                title: "Classes Remaining"
             }
         );
     });
@@ -124,6 +122,7 @@ module.exports = function (app, passport) {
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
                 credits_left: calcCreditsLeft(req.user),
+                title: "Track Classes"
             }
         );
     });
@@ -133,6 +132,7 @@ module.exports = function (app, passport) {
         res.render('classes/schedule.ejs', 
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
+                title: "Current Schedule"
             }
         );
     });
@@ -236,13 +236,11 @@ function calcClassesNeeded(user){
     var classesNeeded=[];
     var notNeededClasses = user.classesFinished.concat(user.classesInProgress).concat(user.classesWaitlisted).concat(user.classesSignedUpfor);
     var names = notNeededClasses.map(getName);
-    console.log(names);
     for (var i=0; i<all_classes.length; i++){
         if (names.indexOf(all_classes[i]._name) === -1){
             classesNeeded.push(all_classes[i]);
         }
     }
-    console.log(classesNeeded);
     return classesNeeded;
 }
 

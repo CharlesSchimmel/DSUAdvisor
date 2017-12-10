@@ -48,11 +48,11 @@
    ,"_description" : "A thorough introduction to assembly language programming and processor architecture. A study of low-level programming techniques, and the layout of a typical computer. The student will gain insight into the memory layout, registers run-time stack, and global data segment of a running program."
    ,"_creditHours" : 3
   },
-  { "_name" : "Systems Analysis"
+  { "_name" : "Structured Systems Analysis"
    ,"_courseNumber" : "332"
    ,"_subject" : "CIS"
    ,"_preRequisites" : ["CSC 150"]
-   ,"_description" : ""
+   ,"_description" : "The study of the Systems Development Life Cycle, including strategies and techniques of structured analysis, planning and design, testing and implementation is stressed.  Case studies will be used along with hands-on application of concepts."
    ,"_creditHours" : 3
   },
   { "_name" : "Discrete Math"

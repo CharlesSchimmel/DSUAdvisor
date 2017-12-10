@@ -3,37 +3,44 @@
 <head>
     <% include ../partials/navbar %>
 </head>
-	<body>
-		<br>
-		<br>
-		<div class="main" style="padding-top: 400px;">
-			<div class="addpadding" >
-				<h2>Classes Left to Take</h2>
-				<table class="table table-striped table-condensed table-hover">
-					<thead>
-						<tr>
-							<th>Class ID</th>
-							<th>Class Name</th>
-							<th>Registered</th>
-							<th>Unregistered</th>
-						</tr>
-					<% for (var i = 0; i < all_classes.length; i++){ %>
-						<% if (classes_taken.indexOf(all_classes[i]) == -1){ %>
-						<tr> 
-							<td> <%= all_classes[i]._subject %> <%= all_classes[i]._courseNumber %> </td>
-							<td> <%= all_classes[i]._name %> </td>
-							<% if (classes_registered.indexOf(all_classes[i]) != -1){%> 
-							<td > <center>&#10004; </center></td> <td></td>
-							<% } else { %>
-							<td> </td> <td > <center>&#10004; </center></td>
-							<% } %>
-						</tr>
-						<% } %>
-					<% } %>
-				</table>
-				</div>
-		</div>
+<body>
+<body style="margin-top: 10vh;">
+	<div class="page-header text-center">
+		<h1><span class="fa"></span>Classes Needed</h1>
+	</div>
 
-	</body>
+	<ul class="list-group">
+
+	<% for (var i=0; i<classes_needed.length; i++) { %>
+	<div class="list-group-item col-md-10 col-md-push-1 col-md-pull-1">
+		<div class="row">
+			<div class="col-md-4">
+				<h4><%= classes_needed[i]._name %></h4>
+			</div> <!--- .col ---!>
+			<div class="col-md-3 pull-right">
+				<h4 class="text-right"><%= classes_needed[i]._subject %> <%=classes_needed[i]._courseNumber %></h4>
+			</div> <!--- .col ---!>
+		</div> <!--- .row ---!>
+
+		<% if (classes_needed[i]._preRequisites.length > 0) { %>
+			<div class="row">
+				<p class="col-md-push-1 col-md-10 text-justify">
+					Prerequisites:
+					<%= classes_needed[i]._preRequisites %>
+				</p> <!--.col -->
+			</div>
+		<% } %>
+
+		<div class="row">
+			<p class="col-md-10 text-justify col-md-push-1">
+				<%= classes_needed[i]._description %>
+			</p> <!--.col -->
+		</div><!-- row --> 
+	</div> <!-- list-group-item col-md-10 col-md-push-1 col-md-pull-1 -->
+	<% } %>
+
+	</ul> <!-- listgroup -->
+</div>
+</body>
 </html>
 
