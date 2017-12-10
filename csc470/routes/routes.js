@@ -46,7 +46,7 @@ module.exports = function (app, passport) {
     app.get('/classes/track', isLoggedIn, function (req, res) {
         res.render('classes/track.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            credits_left: calcCreditsLeft(req.user)
+            credits_left: calcCreditsLeft(req.user),
         });
     });
     /////SCHEDULE
@@ -180,3 +180,4 @@ function untakeClass(user, aClass) {
         user.classesSignedUpfor.splice(index, 1);
     }
 }
+//# sourceMappingURL=routes.js.map
