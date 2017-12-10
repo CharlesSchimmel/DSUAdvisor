@@ -5,10 +5,12 @@
 </head>
 <body>
     <div class="main">
+    <div class="container-fluid">
 	<h1>Your Current Classes</h1>
 	<ul>
-		<% for (var i = 0; i < user.classesInProgress.length; i++){ %>
-		<li> <%= all_classes[i]._name %> </li>
+		<% var inProg = user.classesInProgress %>
+		<% for (var i = 0; i < inProg.length; i++){ %>
+		<li> <%= inProg[i]._name %> </li>
 		<% } %>
 	</ul>
 
