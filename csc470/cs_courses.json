@@ -76,9 +76,9 @@
    ,"_description" : "The study of formalized database design. This course will focus on relational model design and the use of SQL. Students will use a modern relational database to implement designs and learn the basics of data management."
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC Elective I"
+  { "_name" : "Open Elective I"
    ,"_courseNumber" : "000"
-   ,"_subject" : "CSC"
+   ,"_subject" : "ANY"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
@@ -111,9 +111,9 @@
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC Elective II"
+  { "_name" : "Open Elective II"
    ,"_courseNumber" : "000"
-   ,"_subject" : "CSC"
+   ,"_subject" : "ANY"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
@@ -160,9 +160,9 @@
    ,"_description" : ""
    ,"_creditHours" : 3
   },
-  { "_name" : "CSC Elective III"
+  { "_name" : "Open Elective III"
    ,"_courseNumber" : "000"
-   ,"_subject" : "CSC"
+   ,"_subject" : "ANY"
    ,"_preRequisites" : []
    ,"_description" : ""
    ,"_creditHours" : 3
@@ -255,6 +255,20 @@
    ,"_courseNumber" : "000"
    ,"_subject" : "NAT"
    ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "College Algebra"
+   ,"_courseNumber" : "102"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : []
+   ,"_description" : ""
+   ,"_creditHours" : 3
+  },
+  { "_name" : "Trigonometry"
+   ,"_courseNumber" : "120"
+   ,"_subject" : "MATH"
+   ,"_preRequisites" : ["MATH 102"]
    ,"_description" : ""
    ,"_creditHours" : 3
   }

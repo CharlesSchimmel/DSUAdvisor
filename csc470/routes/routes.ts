@@ -38,7 +38,7 @@ module.exports = function (app, passport) {
         res.render('classes/current.ejs', 
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
-                all_classes: all_classes
+                classes_needed: calcClassesNeeded(req.user)
             }
         );
     });
@@ -137,32 +137,35 @@ module.exports = function (app, passport) {
 
     // "In Progress"
     app.post('/classes/take', function(req,res){
-        req.user.classesInProgress.push(req.body.mark_taken);
+        req.user.classesInProgress.push(JSON.parse(req.body.mark_taken));
+        req.user.save(function (err) {if (err) {console.log(err);}});
         res.redirect('/classes/current');
     });
 
     // "Still Needed"
     app.post('/classes/untake', function (req,res){
-        untakeClass(req.user, req.body.mark_taken);
-
+        untakeClass(req.user, JSON.parse(req.body.mark_taken));
         res.redirect('/classes/current');
     });
 
     // "Completed"
     app.post('/classes/completed', function(req,res){
-        req.user.classesFinished.push(req.body.mark_taken);
+        req.user.classesFinished.push(JSON.parse(req.body.mark_taken));
+        req.user.save(function (err) {if (err) {console.log(err);}});
         res.redirect('/classes/current');
     });
 
     // "Waitlisted"
     app.post('/classes/waitlist', function(req,res){
-        req.user.classesWaitlisted.push(req.body.mark_taken);
+        req.user.classesWaitlisted.push(JSON.parse(req.body.mark_taken));
+        req.user.save(function (err) {if (err) {console.log(err);}});
         res.redirect('/classes/current');
     });
 
     // "Registered"
     app.post('/classes/register', function(req,res){
-        req.user.classesSignedUpfor.push(req.body.mark_taken);
+        req.user.classesSignedUpfor.push(JSON.parse(req.body.mark_taken));
+        req.user.save(function (err) {if (err) {console.log(err);}});
         res.redirect('/classes/current');
     });
 
@@ -198,6 +201,7 @@ function calcCreditsLeft(user){
     }
     return count;
 }
+
 function untakeClass(user,aClass){
     var index = user.classesFinished.indexOf(aClass);
     if (index !== -1){ user.classesFinished.splice(index,1) }
@@ -207,4 +211,19 @@ function untakeClass(user,aClass){
     if (index !== -1){ user.classesWaitlisted.splice(index,1) }
     index = user.classesSignedUpfor.indexOf(aClass);
     if (index !== -1){ user.classesSignedUpfor.splice(index,1) }
+    user.save(function (err) {if (err) {console.log(err);}});
+}
+
+function calcClassesNeeded(user){
+    var classes_needed = [];
+    for (var i=0; i< all_classes.length; i++){
+        if ( (user.classesInProgress.indexOf(all_classes[i]) === -1) &&
+            (user.classesFinished.indexOf(all_classes[i]) === -1) &&
+            (user.classesWaitlisted.indexOf(all_classes[i]) === -1) &&
+            (user.classesSignedUpfor.indexOf(all_classes[i]) === -1)
+            ){
+                classes_needed.push(all_classes[i]);
+            }
+    }
+    return classes_needed;
 }
