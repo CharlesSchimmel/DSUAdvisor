@@ -20,17 +20,37 @@ module.exports = function (app, passport) {
     // =====================================
 
     app.get('/menu', isLoggedIn, function (req, res) {
-        res.render('menu/menu.ejs', { user_isloggedin: req.isAuthenticated() });
+        if (req.user) {
+            res.render('menu/menu.ejs')
+        } else {
+            res.render('index.ejs', { user_isloggedin: req.isAuthenticated() }); // load the index.ejs file
+        }
     });
 
     /////MAJOR
     app.get('/major', isLoggedIn, function (req, res) {
-        res.render('menu/major.ejs', { user_isloggedinoggedin: req.isAuthenticated() });
+        res.render('menu/major.ejs',
+            {
+                user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+            }
+        );
     });
 
     app.post('/majorSubmit', isLoggedIn, function (req, res) {
-        console.log(req.body.toString());
+        //console.log(req.body.toString());
         req.user.major = req.body.major;
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+        res.redirect('/profile');
+    });
+
+    app.post('/lengthSubmit', isLoggedIn, function (req, res) {
+        //console.log(req.body.toString());
+        req.user.progLength = req.body.progLength;
         req.user.save(function (err) {
             if (err)
                 console.log('Accout update failed');

@@ -18,15 +18,33 @@ module.exports = function (app, passport) {
     // MENU ================================
     // =====================================
     app.get('/menu', isLoggedIn, function (req, res) {
-        res.render('menu/menu.ejs', { user_isloggedin: req.isAuthenticated() });
+        if (req.user) {
+            res.render('menu/menu.ejs');
+        }
+        else {
+            res.render('index.ejs', { user_isloggedin: req.isAuthenticated() }); // load the index.ejs file
+        }
     });
     /////MAJOR
     app.get('/major', isLoggedIn, function (req, res) {
-        res.render('menu/major.ejs', { user_isloggedinoggedin: req.isAuthenticated() });
+        res.render('menu/major.ejs', {
+            user_isloggedin: req.isAuthenticated(),
+            user: req.user,
+        });
     });
     app.post('/majorSubmit', isLoggedIn, function (req, res) {
-        console.log(req.body.toString());
+        //console.log(req.body.toString());
         req.user.major = req.body.major;
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return;
+        });
+        res.redirect('/profile');
+    });
+    app.post('/lengthSubmit', isLoggedIn, function (req, res) {
+        //console.log(req.body.toString());
+        req.user.progLength = req.body.progLength;
         req.user.save(function (err) {
             if (err)
                 console.log('Accout update failed');
@@ -39,7 +57,7 @@ module.exports = function (app, passport) {
         res.render('classes/current.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
             all_classes: all_classes,
-            classes_needed: calcClassesNeeded(req.user)
+            classes_needed: calcClassesNeeded(req.user),
         });
     });
     /////CLASSES CURRENT POSTS
@@ -79,20 +97,20 @@ module.exports = function (app, passport) {
     app.get('/classes/taken', isLoggedIn, function (req, res) {
         res.render('classes/taken.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            all_classes: req.user.classesFinished
+            all_classes: req.user.classesFinished,
         });
     });
     /////TRACK
     app.get('/classes/track', isLoggedIn, function (req, res) {
         res.render('classes/track.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            credits_left: calcCreditsLeft(req.user)
+            credits_left: calcCreditsLeft(req.user),
         });
     });
     /////SCHEDULE
     app.get('/classes/schedule', isLoggedIn, function (req, res) {
         res.render('classes/schedule.ejs', { user_isloggedin: req.isAuthenticated(),
-            user: req.user
+            user: req.user,
         });
     });
     // ===================================================================================================================
@@ -207,3 +225,4 @@ function untakeClass(user, aClass) {
     }
     user.save();
 }
+//# sourceMappingURL=routes.js.map

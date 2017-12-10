@@ -4,10 +4,11 @@
     <% include ../partials/navbar %>
 </head>
 <body>
-
+<br>
+<br>
 <div class="main">
 	<div class="center addpadding">
-		<h3>Select A Major</h3>
+		<h3>Update Major or Program Lenght</h3>
 		
 
 		<form action="/majorSubmit" method="post">
@@ -17,6 +18,25 @@
           <option value="" disabled="disabled" selected="selected">Major</option>
           <option value="csc">Computer Science</option>
           <option value="ceng">Computer Engineering</option>
+        </select>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+    </form>
+
+	<br>
+	<br>
+
+	<form action="/lengthSubmit" method="post">
+      
+      <div class="select_join">
+        <select name="progLength">
+          <option value="" disabled="disabled" selected="selected">Program Length</option>
+          <option value="unknown">Unknown</option>
+          <option value="1">1 yr</option>
+		  <option value="2">2 yrs</option>
+		  <option value="4">4 yrs</option>
+		  <option value="5">5 yrs</option>
         </select>
       </div>
       <br>
