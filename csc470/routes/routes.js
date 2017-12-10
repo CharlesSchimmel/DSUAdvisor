@@ -46,7 +46,7 @@ module.exports = function (app, passport) {
     app.get('/classes/track', isLoggedIn, function (req, res) {
         res.render('classes/track.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            all_classes: all_classes
+            credits_left: calcCreditsLeft(req.user)
         });
     });
     /////SCHEDULE
@@ -69,7 +69,7 @@ module.exports = function (app, passport) {
     });
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/profile',
+        successRedirect: '/menu',
         failureRedirect: '/login',
         failureFlash: true // allow flash messages
     }));
@@ -83,6 +83,24 @@ module.exports = function (app, passport) {
             message: req.flash('signupMessage'),
             user_isloggedin: req.isAuthenticated()
         });
+    });
+    // app.post for /classes/take that takes the class and adds it to users finished classes
+    // same for taking, registered, waitlist, and untaken
+    //
+    app.post('/classes/take', function (req, res) {
+        req.user.classesFinished.push(req.body.mark_taken._name);
+        console.log("received classes/take post with class:");
+        console.log(req.body.mark_taken._name);
+        res.redirect('/classes/current');
+    });
+    app.post('/classes/untake', function (req, res) {
+        res.redirect('/classes/current.ejs');
+    });
+    app.post('/classes/waitlist', function (req, res) {
+        res.redirect('/classes/current.ejs');
+    });
+    app.post('/classes/register', function (req, res) {
+        res.redirect('/classes/current.ejs');
     });
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
@@ -125,3 +143,12 @@ function isLoggedIn(req, res, next) {
 }
 var fs = require('fs');
 var all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
+function calcCreditsLeft(user) {
+    var count = 0;
+    for (var i = 0; i < all_classes.length; i++) {
+        if (user.classesFinished.indexOf(all_classes[i]) <= -1) {
+            count += all_classes[i]._creditHours;
+        }
+    }
+    return count;
+}

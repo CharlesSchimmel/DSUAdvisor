@@ -7,16 +7,16 @@
 <div class="main">
 	<div class="center addpadding">
 		<h2>Menu</h2>
-		<h3>Major: </h3>
-		<% if ( typeof message !== "undefined" ) { %>
-		<h4> <%= message %> </h4>
+		<!-- show any messages that come back with authentication -->
+		<% if (typeof message !== "undefined") { %>
+			<div class="alert alert-danger"><%= message %></div>
 		<% } %>
 
 		<h4>
 		<div class="btn-group-vertical">
 			<a type="button" class="btn btn-primary" href="/major">Select / Change Major</a>
-			<a type="button" class="btn btn-primary"  href="/classes_current">Classes Current Status</a>
-			<a type="button" class="btn btn-primary"  href="/classes_left">Classes Left to Take</a>
+			<a type="button" class="btn btn-primary"  href="/classes/current">Classes Current Status</a>
+			<a type="button" class="btn btn-primary"  href="/classes/taken">Classes Left to Take</a>
 			<a type="button" class="btn btn-primary" href="/track">Track Progress</a>
 			<a type="button" class="btn btn-primary"  href="/schedule">Create Schedule</a>
 		</div>

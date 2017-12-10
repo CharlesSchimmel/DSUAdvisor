@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 compile_and_report(){
     tsc "$1" && echo "compiled $1"
 }
