@@ -29,8 +29,19 @@ module.exports = function (app, passport) {
     });
 
     app.post('/majorSubmit', isLoggedIn, function (req, res) {
-        console.log(req.body.toString());
+        //console.log(req.body.toString());
         req.user.major = req.body.major;
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+        res.redirect('/profile');
+    });
+
+    app.post('/lengthSubmit', isLoggedIn, function (req, res) {
+        //console.log(req.body.toString());
+        req.user.progLength = req.body.progLength;
         req.user.save(function (err) {
             if (err)
                 console.log('Accout update failed');
