@@ -47,18 +47,19 @@
     <Content Include="public\stylesheets\node-loginStyle.styl" />
     <Content Include="public\stylesheets\signup.css" />
     <Content Include="public\stylesheets\track.css" />
+    <Content Include="views\classes\current.ejs" />
+    <Content Include="views\classes\schedule.ejs" />
+    <Content Include="views\classes\taken.ejs" />
+    <Content Include="views\classes\track.ejs" />
     <Content Include="views\index.ejs" />
     <Content Include="views\account\login.ejs" />
     <Content Include="views\account\profile.ejs" />
     <Content Include="views\account\signup.ejs" />
-    <Content Include="views\menu\classes_current.ejs" />
-    <Content Include="views\menu\classes_left.ejs" />
     <Content Include="views\error.ejs" />
     <Content Include="views\menu\major.ejs" />
     <Content Include="views\menu\menu.ejs" />
     <Content Include="views\menu\status.ejs" />
     <Content Include="views\partials\navbar.ejs" />
-    <Content Include="views\menu\track.ejs" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="config\database.ts">
       <SubType>Code</SubType>
@@ -88,6 +89,7 @@
     <Folder Include="routes\" />
     <Folder Include="views\" />
     <Folder Include="views\account\" />
+    <Folder Include="views\classes\" />
     <Folder Include="views\menu\" />
     <Folder Include="views\partials\" />
   </ItemGroup>

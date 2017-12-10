@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // load the things we need
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
     classesFinished: [],
     classesInProgress: [],
     classesWaitlisted: [],
-    classesSignedUpfor: []
+    classesSignedUpfor: [],
 });
 // methods ======================
 // generating a hash
@@ -27,3 +27,4 @@ userSchema.methods.validPassword = function (password) {
 };
 // create the model for users and expose it to our app
 module.exports = mongoose.model('User', userSchema);
+//# sourceMappingURL=user.js.map

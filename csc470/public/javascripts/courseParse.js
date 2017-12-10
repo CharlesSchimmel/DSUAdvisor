@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 function parseCourses(loc) {
     var courseList = [];
@@ -18,3 +18,4 @@ function searchCourseByNumber(num, courseList) {
     }
 }
 exports.searchCourseByNumber = searchCourseByNumber;
+//# sourceMappingURL=courseParse.js.map

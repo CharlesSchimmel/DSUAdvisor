@@ -29,8 +29,14 @@ module.exports = function (app, passport) {
     });
 
     app.post('/majorSubmit', isLoggedIn, function (req, res) {
-        console.log(req.body);
-        return res.end;
+        console.log(req.body.toString());
+        req.user.major = req.body.major;
+        req.user.save(function (err) {
+            if (err)
+                console.log('Accout update failed');
+            return
+        });
+        res.redirect('/profile');
     });
 
     /////CLASSES CURRENT
@@ -38,17 +44,24 @@ module.exports = function (app, passport) {
         res.render('classes/current.ejs', 
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
-                all_classes: all_classes
+                all_classes: req.user.classesInProgress,
+                classesWaitlisted: req.user.classesWaitlisted,
+                classesSignedUpfor: req.user.classesSignedUpfor,
             }
         );
     });
+
+    //classesFinished: [],
+    //    classesInProgress: [],
+    //        classesWaitlisted: [],
+    //            classesSignedUpfor: [],
 
     /////CLASSES TAKEN
     app.get('/classes/taken', isLoggedIn, function (req, res) {
         res.render('classes/taken.ejs', 
             { user_isloggedin: req.isAuthenticated(),
                 user: req.user,
-                all_classes: all_classes
+                all_classes: req.user.classesFinished,
             }
         );
     });
@@ -138,31 +151,35 @@ module.exports = function (app, passport) {
     // "In Progress"
     app.post('/classes/take', function(req,res){
         req.user.classesInProgress.push(req.body.mark_taken);
+        req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Still Needed"
     app.post('/classes/untake', function (req,res){
         untakeClass(req.user, req.body.mark_taken);
-
+        req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Completed"
     app.post('/classes/completed', function(req,res){
         req.user.classesFinished.push(req.body.mark_taken);
+        req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Waitlisted"
     app.post('/classes/waitlist', function(req,res){
         req.user.classesWaitlisted.push(req.body.mark_taken);
+        req.user.save();
         res.redirect('/classes/current');
     });
 
     // "Registered"
     app.post('/classes/register', function(req,res){
         req.user.classesSignedUpfor.push(req.body.mark_taken);
+        req.user.save();
         res.redirect('/classes/current');
     });
 
