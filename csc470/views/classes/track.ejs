@@ -6,12 +6,10 @@
 <body>
 <br>
 <br>
-<br>
-<br>
 <div class="main">
 	<div class="center addpadding">
 		<h2 class="center">Track Progress</h2>
-		<p style="margin-top: 10px;" class="center"><% if (credits_left >= 0){ %> <%= credits_left %> <% } else { %> Zero <% } %> credits are currently<p>
+		<p style="margin-top: 10px;" class="center"><% if (credits_left >= 0){ %> <%= credits_left %> <% } else { %> Zero <% } %> credits are currently unfinished.<p>
 		<p class="center">At 15 credits/semester, you have <%= Math.ceil(credits_left / 15) %> semesters remaining.<p>
 		<a type="button" class="btn btn-primary" href="/classes/current">Current Status of All Classes</button>
 	</div>

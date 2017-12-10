@@ -176,15 +176,16 @@ var fs = require('fs');
 var all_classes = JSON.parse(fs.readFileSync('cs_courses.json', 'utf8'));
 function calcCreditsLeft(user) {
     var count = 0;
-    for (var i = 0; i < all_classes.length; i++) {
-        if (user.classesFinished.indexOf(all_classes[i]) <= -1) {
+    var finishedNames = user.classesFinished.map(getName);
+    for (var i = 0; i < all_classes; i++) {
+        if (finishedNames.indexOf(all_classes[i]._name) === -1) {
             count += all_classes[i]._creditHours;
         }
     }
     return count;
 }
+function getName(c) { return c._name; }
 function calcClassesNeeded(user) {
-    var getName = function (c) { return c._name; };
     var classesNeeded = [];
     var notNeededClasses = user.classesFinished.concat(user.classesInProgress).concat(user.classesWaitlisted).concat(user.classesSignedUpfor);
     var names = notNeededClasses.map(getName);
