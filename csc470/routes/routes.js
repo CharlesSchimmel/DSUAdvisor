@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 //setup
 var func = require("./../public/javascripts/requestFunctions");
 //module
@@ -46,10 +46,10 @@ module.exports = function (app, passport) {
         res.render('menu/major.ejs', {
             user_isloggedin: req.isAuthenticated(),
             user: req.user,
+            title: "Change Major"
         });
     });
     app.post('/majorSubmit', isLoggedIn, function (req, res) {
-        //console.log(req.body.toString());
         req.user.major = req.body.major;
         req.user.save(function (err) {
             if (err)
@@ -59,7 +59,6 @@ module.exports = function (app, passport) {
         res.redirect('/profile');
     });
     app.post('/lengthSubmit', isLoggedIn, function (req, res) {
-        //console.log(req.body.toString());
         req.user.progLength = req.body.progLength;
         req.user.save(function (err) {
             if (err)
@@ -74,6 +73,7 @@ module.exports = function (app, passport) {
             user: req.user,
             all_classes: func.all_classes,
             classes_needed: func.calcClassesNeeded(req.user),
+            title: "Current Classes"
         });
     });
     /////CLASSES CURRENT POSTS
@@ -129,11 +129,12 @@ module.exports = function (app, passport) {
         });
         res.redirect('/classes/current');
     });
-    /////CLASSES TAKEN
+    /////CLASSES NEEDED
     app.get('/classes/taken', isLoggedIn, function (req, res) {
         res.render('classes/taken.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
-            all_classes: req.user.classesFinished,
+            classes_needed: func.calcClassesNeeded(req.user),
+            title: "Classes Remaining"
         });
     });
     /////TRACK
@@ -141,12 +142,14 @@ module.exports = function (app, passport) {
         res.render('classes/track.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
             credits_left: func.calcCreditsLeft(req.user),
+            title: "Track Classes"
         });
     });
     /////SCHEDULE
     app.get('/classes/schedule', isLoggedIn, function (req, res) {
         res.render('classes/schedule.ejs', { user_isloggedin: req.isAuthenticated(),
             user: req.user,
+            title: "Current Schedule"
         });
     });
     // ===================================================================================================================
@@ -241,4 +244,3 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/login');
 }
-//# sourceMappingURL=routes.js.map
