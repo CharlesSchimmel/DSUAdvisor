@@ -51,10 +51,44 @@ module.exports = function (app, passport) {
         );
     });
 
-    //classesFinished: [],
-    //    classesInProgress: [],
-    //        classesWaitlisted: [],
-    //            classesSignedUpfor: [],
+    //UPDATE CLASS STATUSES
+    // app.post for /classes/take that takes the class and adds it to users finished classes
+    // same for taking, registered, waitlist, and untaken
+
+    // "In Progress"
+    app.post('/classes/take', function (req, res) {
+        req.user.classesInProgress.push(req.body.mark_taken);
+        req.user.save();
+        res.redirect('/classes/current');
+    });
+
+    // "Still Needed"
+    app.post('/classes/untake', function (req, res) {
+        untakeClass(req.user, req.body.mark_taken);
+        req.user.save();
+        res.redirect('/classes/current');
+    });
+
+    // "Completed"
+    app.post('/classes/completed', function (req, res) {
+        req.user.classesFinished.push(req.body.mark_taken);
+        req.user.save();
+        res.redirect('/classes/current');
+    });
+
+    // "Waitlisted"
+    app.post('/classes/waitlist', function (req, res) {
+        req.user.classesWaitlisted.push(req.body.mark_taken);
+        req.user.save();
+        res.redirect('/classes/current');
+    });
+
+    // "Registered"
+    app.post('/classes/register', function (req, res) {
+        req.user.classesSignedUpfor.push(req.body.mark_taken);
+        req.user.save();
+        res.redirect('/classes/current');
+    });
 
     /////CLASSES TAKEN
     app.get('/classes/taken', isLoggedIn, function (req, res) {
@@ -126,7 +160,7 @@ module.exports = function (app, passport) {
     }));
 
     // =====================================
-    // PROFILE SECTION =========================
+    // PROFILE SECTION =====================
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
@@ -144,45 +178,6 @@ module.exports = function (app, passport) {
         req.logout();
         res.redirect('/');
     });
-    //
-    // app.post for /classes/take that takes the class and adds it to users finished classes
-    // same for taking, registered, waitlist, and untaken
-
-    // "In Progress"
-    app.post('/classes/take', function(req,res){
-        req.user.classesInProgress.push(req.body.mark_taken);
-        req.user.save();
-        res.redirect('/classes/current');
-    });
-
-    // "Still Needed"
-    app.post('/classes/untake', function (req,res){
-        untakeClass(req.user, req.body.mark_taken);
-        req.user.save();
-        res.redirect('/classes/current');
-    });
-
-    // "Completed"
-    app.post('/classes/completed', function(req,res){
-        req.user.classesFinished.push(req.body.mark_taken);
-        req.user.save();
-        res.redirect('/classes/current');
-    });
-
-    // "Waitlisted"
-    app.post('/classes/waitlist', function(req,res){
-        req.user.classesWaitlisted.push(req.body.mark_taken);
-        req.user.save();
-        res.redirect('/classes/current');
-    });
-
-    // "Registered"
-    app.post('/classes/register', function(req,res){
-        req.user.classesSignedUpfor.push(req.body.mark_taken);
-        req.user.save();
-        res.redirect('/classes/current');
-    });
-
 
     // ===================================================================================================================
     // ERROR =============================================================================================================
