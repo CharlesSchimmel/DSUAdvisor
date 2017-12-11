@@ -59,6 +59,7 @@
     <Content Include="views\menu\major.ejs" />
     <Content Include="views\menu\menu.ejs" />
     <Content Include="views\menu\status.ejs" />
+    <Content Include="views\partials\navbarMenu.ejs" />
     <Content Include="views\partials\navbar.ejs" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="config\database.ts">

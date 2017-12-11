@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 //setup
 var func = require("./../public/javascripts/requestFunctions");
 //module
@@ -244,3 +244,4 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/login');
 }
+//# sourceMappingURL=routes.js.map
