@@ -14,9 +14,29 @@ export var invalidEmailMessage = 'Please enter a password between 8 - 14 charict
 // ===============================
 
 export function isValidEmail(email) {
-    return true;
+    if (email.indexOf("@trojens.dsu.edu") != -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
 };
 
-export function isValidPassword(email) {
-    return true;
+export function isValidPassword(password) {
+    var fail = 0;
+
+    for (var i = 33; i < 48; i++) {
+
+        if (password.indexOf(String.fromCharCode(i)) == -1) {
+            fail++;
+        }
+    }
+
+    if (fail == 16 || password.size < 8 || password.size > 14) {
+        return false;
+    }
+
+    else {
+        return true;
+    }
 };
