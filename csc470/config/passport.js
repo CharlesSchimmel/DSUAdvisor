@@ -1,5 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // load all the things we need
 var LocalStrategy = require('passport-local').Strategy;
+var LoginFunc = require("./../public/javascripts/loginFunctions");
 // load up the user model
 var User = require('../routes/user');
 // expose this function to our app using module.exports
@@ -45,22 +48,26 @@ module.exports = function (passport) {
                 return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
             }
             else {
-                // if there is no user with that email
-                // create the user
-                var newUser = new User();
-                // set the user's local credentials
-                newUser.email = email;
-                newUser.password = newUser.generateHash(password); // use the generateHash function in our user model
-                //newUser.firstName = firstName;
-                //newUser.lastName = lastName;
-                //newUser.major = major;
-                //newUser.progLength = <Number>progLength;
-                // save the user
-                newUser.save(function (err) {
-                    if (err)
-                        throw err;
-                    return done(null, newUser);
-                });
+                if (LoginFunc.isValidEmail(email) && LoginFunc.isValidPassword(password)) {
+                    // if there is no user with that email
+                    // create the user
+                    var newUser = new User();
+                    // set the user's local credentials
+                    newUser.email = email;
+                    newUser.password = newUser.generateHash(password); // use the generateHash function in our user model
+                    // save the user
+                    newUser.save(function (err) {
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
+                else if (!LoginFunc.isValidEmail(email)) {
+                    return done(null, false, req.flash(LoginFunc.invalidEmailMessage));
+                }
+                else if (!LoginFunc.isValidPassword(email)) {
+                    return done(null, false, req.flash(LoginFunc.invalidEmailMessage));
+                }
             }
         });
     }));
@@ -92,3 +99,4 @@ module.exports = function (passport) {
         });
     }));
 };
+//# sourceMappingURL=passport.js.map

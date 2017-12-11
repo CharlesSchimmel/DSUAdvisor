@@ -1,5 +1,6 @@
 ﻿//setup
 import func = require('./../public/javascripts/requestFunctions');
+import LoginFunc = require('./../public/javascripts/loginFunctions');
 
 //module
 module.exports = function (app, passport) {
@@ -235,6 +236,34 @@ module.exports = function (app, passport) {
         });
     });
 
+    app.get('/changePassword', function (req, res) {
+        res.render('account/changePassword.ejs',
+            {
+                user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+                title: "Change Major"
+            }
+        );
+    });
+
+    app.post('/changePassword', function (req, res) {
+        if (LoginFunc.isValidPassword(req.body.password)) {
+            req.user.password = req.user.generateHash(req.body.password);
+            req.user.save(function (err) {
+                if (err)
+                    console.log('Accout update failed');
+                return
+            });
+            //could add flash message here
+            req.flash('Success!');
+            res.redirect('/profile');
+        } else {
+            console.log(LoginFunc.invalidPasswordMessage);
+            req.flash(LoginFunc.invalidPasswordMessage);
+            res.redirect('/chagePassword');
+        }
+    });
+
     // =====================================
     // LOGOUT ==============================
     // =====================================
@@ -252,7 +281,7 @@ module.exports = function (app, passport) {
     });
 };
 
-// route middleware to make sure
+
 function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on
