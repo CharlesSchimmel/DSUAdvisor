@@ -3,22 +3,24 @@
 <head>
     <% include ../partials/navbar %>
 </head>
-<body>
-<br>
-<br>
-<div class="main">
-	<div class="center addpadding">
-		<h2 class="center">Track Progress</h2>
-		<% var aproxSemesters = Math.ceil(credits_left / 15) %>
-		<% if (aproxSemesters <= user.progLength*2) { %>
-		<h3> ON TRACK </h4>
-		<% } else { %>
-		<h3> BEHIND TRACK </h4>
-		<% } %>
-		<p> You want to graduate in <%= user.progLength %> years. 
-		<p style="margin-top: 10px;" class="center"><% if (credits_left > 0){ %> <%= credits_left %> <% } else { %> Zero <% } %> credits are currently unfinished.<p>
-		<p class="center">At 15 credits/semester, you have <%= aproxSemesters %> semesters remaining.<p>
-		<a type="button" class="btn btn-primary" href="/classes/current">Current Status of All Classes</button>
+<body class="main" style="margin-top: 5vh;">
+	<div class="conatainer">
+		<div class="row page-header text-center">
+			<h1>Track Progress</h1>
+		</div>
+		<div class="row well col-md-8 col-md-push-2 col-centered">
+			<% var aproxSemesters = Math.ceil(credits_left / 15) %>
+			<% if (aproxSemesters <= user.progLength*2) { %>
+			<h2> ON TRACK </h3>
+			<% } else { %>
+			<h2 class=> BEHIND TRACK </h3>
+			<% } %>
+			<p> You want to graduate in <%= user.progLength %> years. 
+			<p style="margin-top: 10px;" class="center"><% if (credits_left > 0){ %> <%= credits_left %> <% } else { %> Zero <% } %> credits are currently unfinished.<p>
+			<p class="center">At 15 credits/semester, you have <%= aproxSemesters %> semesters remaining.<p>
+			<p class="center">To graduate in <%= user.progLength %> years you would need to take <%= credits_left / (user.progLength * 2) %> credits per semester. <p>
+			<a type="button" class="btn btn-primary" href="/classes/current">Current Status of All Classes</a>
+		</div>
 	</div>
 </div>
 

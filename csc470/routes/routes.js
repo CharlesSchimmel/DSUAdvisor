@@ -70,34 +70,21 @@ module.exports = function (app, passport) {
     // same for taking, registered, waitlist, and untaken
     // "In Progress"
     app.post('/classes/take', function (req, res) {
-        req.user.classesInProgress.push(JSON.parse(req.body.mark_taken));
-        req.user.save(function (err) {
-            if (err)
-                console.log('Accout update failed');
-            return;
-        });
+        var classData = JSON.parse(req.body.mark_taken);
+        func.untakeClass(req.user, classData); // remove from all other lists
+        req.user.classesInProgress.push(classData);
         res.redirect('/classes/current');
     });
     // "Still Needed"
     app.post('/classes/untake', function (req, res) {
         func.untakeClass(req.user, JSON.parse(req.body.mark_taken));
-        req.user.save(function (err) {
-            if (err)
-                console.log('Accout update failed');
-            return;
-        });
         res.redirect('/classes/current');
     });
     // "Completed"
     app.post('/classes/completed', function (req, res) {
         var classData = JSON.parse(req.body.mark_taken);
-        func.untakeClass(req.user, classData);
-        req.user.classesFinished.push(JSON.parse(req.body.mark_taken));
-        req.user.save(function (err) {
-            if (err)
-                console.log('Accout update failed');
-            return;
-        });
+        func.untakeClass(req.user, classData); // remove from all other lists
+        req.user.classesFinished.push(classData);
         res.redirect('/classes/current');
     });
     // "Waitlisted"
@@ -105,23 +92,13 @@ module.exports = function (app, passport) {
         var classData = JSON.parse(req.body.mark_taken);
         func.untakeClass(req.user, classData);
         req.user.classesWaitlisted.push(classData);
-        req.user.save(function (err) {
-            if (err)
-                console.log('Accout update failed');
-            return;
-        });
         res.redirect('/classes/current');
     });
     // "Registered"
     app.post('/classes/register', function (req, res) {
         var classData = JSON.parse(req.body.mark_taken);
         func.untakeClass(req.user, classData);
-        req.user.classesSignedUpfor.push(JSON.parse(req.body.mark_taken));
-        req.user.save(function (err) {
-            if (err)
-                console.log('Accout update failed');
-            return;
-        });
+        req.user.classesSignedUpfor.push(classData);
         res.redirect('/classes/current');
     });
     /////CLASSES NEEDED
