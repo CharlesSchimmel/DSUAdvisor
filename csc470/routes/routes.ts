@@ -248,7 +248,7 @@ module.exports = function (app, passport) {
 
     app.post('/changePassword', function (req, res) {
         if (LoginFunc.isValidPassword(req.body.password)) {
-            req.user.password = req.body.password;
+            req.user.password = req.user.generateHash(req.body.password);
             req.user.save(function (err) {
                 if (err)
                     console.log('Accout update failed');
@@ -281,7 +281,7 @@ module.exports = function (app, passport) {
     });
 };
 
-// route middleware to make sure
+
 function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on
