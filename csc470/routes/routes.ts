@@ -109,6 +109,8 @@ module.exports = function (app, passport) {
 
     // "Completed"
     app.post('/classes/completed', function(req,res){
+        var classData = JSON.parse(req.body.mark_taken);
+        func.untakeClass(req.user,classData);
         req.user.classesFinished.push(JSON.parse(req.body.mark_taken));
 
         req.user.save(function (err) {
@@ -122,8 +124,10 @@ module.exports = function (app, passport) {
 
     // "Waitlisted"
     app.post('/classes/waitlist', function(req,res){
-        req.user.classesWaitlisted.push(JSON.parse(req.body.mark_taken));
+        var classData = JSON.parse(req.body.mark_taken);
+        func.untakeClass(req.user,classData);
 
+        req.user.classesWaitlisted.push(classData);
         req.user.save(function (err) {
             if (err)
                 console.log('Accout update failed');
@@ -135,6 +139,8 @@ module.exports = function (app, passport) {
 
     // "Registered"
     app.post('/classes/register', function(req,res){
+        var classData = JSON.parse(req.body.mark_taken);
+        func.untakeClass(req.user,classData);
         req.user.classesSignedUpfor.push(JSON.parse(req.body.mark_taken));
 
         req.user.save(function (err) {

@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 //setup
 var func = require("./../public/javascripts/requestFunctions");
 //module
@@ -14,13 +14,13 @@ module.exports = function (app, passport) {
         if (req.user) {
             res.render('menu/menu.ejs', {
                 user_isloggedin: req.isAuthenticated(),
-                user: req.user,
+                user: req.user
             });
         }
         else {
             res.render('index.ejs', {
                 user_isloggedin: req.isAuthenticated(),
-                user: req.user,
+                user: req.user
             });
         }
     });
@@ -90,6 +90,8 @@ module.exports = function (app, passport) {
     });
     // "Completed"
     app.post('/classes/completed', function (req, res) {
+        var classData = JSON.parse(req.body.mark_taken);
+        func.untakeClass(req.user, classData);
         req.user.classesFinished.push(JSON.parse(req.body.mark_taken));
         req.user.save(function (err) {
             if (err)
@@ -100,7 +102,9 @@ module.exports = function (app, passport) {
     });
     // "Waitlisted"
     app.post('/classes/waitlist', function (req, res) {
-        req.user.classesWaitlisted.push(JSON.parse(req.body.mark_taken));
+        var classData = JSON.parse(req.body.mark_taken);
+        func.untakeClass(req.user, classData);
+        req.user.classesWaitlisted.push(classData);
         req.user.save(function (err) {
             if (err)
                 console.log('Accout update failed');
@@ -110,6 +114,8 @@ module.exports = function (app, passport) {
     });
     // "Registered"
     app.post('/classes/register', function (req, res) {
+        var classData = JSON.parse(req.body.mark_taken);
+        func.untakeClass(req.user, classData);
         req.user.classesSignedUpfor.push(JSON.parse(req.body.mark_taken));
         req.user.save(function (err) {
             if (err)
@@ -233,4 +239,3 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/login');
 }
-//# sourceMappingURL=routes.js.map

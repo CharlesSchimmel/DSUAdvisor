@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 //setup
 var fs = require('fs');
 // ===============================
@@ -49,20 +49,19 @@ exports.calcClassesNeeded = calcClassesNeeded;
  * Removes course from users list of taken courses
  */
 function untakeClass(user, aClass) {
-    var index = user.classesFinished.indexOf(aClass);
-    console.log(aClass);
+    var index = user.classesFinished.map(getName).indexOf(aClass._name);
     if (index !== -1) {
         user.classesFinished.splice(index, 1);
     }
-    index = user.classesInProgress.indexOf(aClass);
+    index = user.classesInProgress.map(getName).indexOf(aClass._name);
     if (index !== -1) {
         user.classesInProgress.splice(index, 1);
     }
-    index = user.classesWaitlisted.indexOf(aClass);
+    index = user.classesWaitlisted.map(getName).indexOf(aClass._name);
     if (index !== -1) {
         user.classesWaitlisted.splice(index, 1);
     }
-    index = user.classesSignedUpfor.indexOf(aClass);
+    index = user.classesSignedUpfor.map(getName).indexOf(aClass._name);
     if (index !== -1) {
         user.classesSignedUpfor.splice(index, 1);
     }
@@ -73,4 +72,3 @@ function untakeClass(user, aClass) {
     });
 }
 exports.untakeClass = untakeClass;
-//# sourceMappingURL=requestFunctions.js.map
