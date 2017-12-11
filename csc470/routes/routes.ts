@@ -194,7 +194,7 @@ module.exports = function (app, passport) {
         successRedirect: '/signup2',
         failureRedirect: '/signup',
         failureFlash: true
-    }));
+    }) );
 
     app.get('/signup2', function (req, res) {
 
@@ -216,11 +216,11 @@ module.exports = function (app, passport) {
                     console.log('Accout update failed');
                 return
             });
+            req.flash('signupMessage', 'Success!');
             res.redirect('/profile');
         } else {
-
-            res.redirect('/signup2');
             req.flash('signupMessage', 'Sorry you\'re missing some information');
+            res.redirect('/signup2');
         }
     });
 
@@ -237,30 +237,27 @@ module.exports = function (app, passport) {
     });
 
     app.get('/changePassword', function (req, res) {
-        res.render('account/changePassword.ejs',
-            {
-                user_isloggedin: req.isAuthenticated(),
-                user: req.user,
-                title: "Change Major"
-            }
-        );
+        res.render('account/changePassword.ejs', {
+            message: req.flash('Message'),
+            user_isloggedin: req.isAuthenticated()
+        });
     });
 
     app.post('/changePassword', function (req, res) {
         if (LoginFunc.isValidPassword(req.body.password)) {
-            req.user.password = req.user.generateHash(req.body.password);
-            req.user.save(function (err) {
-                if (err)
-                    console.log('Accout update failed');
-                return
-            });
-            //could add flash message here
-            req.flash('Success!');
-            res.redirect('/profile');
+                req.user.password = req.user.generateHash(req.body.password);
+                req.user.save(function (err) {
+                    if (err)
+                        console.log('Accout update failed');
+                    return
+                });
+                //could add flash message here
+                req.flash('Message', 'Success!');
+                res.redirect('/profile');
         } else {
             console.log(LoginFunc.invalidPasswordMessage);
             req.flash(LoginFunc.invalidPasswordMessage);
-            res.redirect('/chagePassword');
+            res.redirect('Message', '/chagePassword');
         }
     });
 

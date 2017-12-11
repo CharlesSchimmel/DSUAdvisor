@@ -76,7 +76,7 @@ module.exports = function (passport) {
                     else if (!LoginFunc.isValidEmail(email)){
                         return done(null, false, req.flash(LoginFunc.invalidEmailMessage));
                     }
-                    else if (!LoginFunc.isValidPassword(email)){
+                    else if (!LoginFunc.isValidPassword(password)){
                         return done(null, false, req.flash(LoginFunc.invalidEmailMessage));
                     }
                 }

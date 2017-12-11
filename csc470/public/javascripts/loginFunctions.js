@@ -9,6 +9,9 @@ exports.invalidEmailMessage = 'Please enter a password between 8 - 14 charictors
 // ===============================
 // EXPORTED FUNCTIONS ============
 // ===============================
+/**
+ * Checks to see if the user entered an @trojens.dsu.edu email
+ */
 function isValidEmail(email) {
     if (email.indexOf("@trojens.dsu.edu") != -1) {
         return true;
@@ -19,6 +22,10 @@ function isValidEmail(email) {
 }
 exports.isValidEmail = isValidEmail;
 ;
+/**
+ * Checks to see if the user entered a valid password
+ * Must have 8 - 14 chars, and a special char
+ */
 function isValidPassword(password) {
     var fail = 0;
     for (var i = 33; i < 48; i++) {
