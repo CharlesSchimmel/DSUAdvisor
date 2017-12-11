@@ -8,25 +8,28 @@
 		<h1><span class="fa"></span>Current Schedule</h1>
 	</div>
 
-	<% for (var i=0; i<user.classesInProgress.length; i++) { %>
-	<div class="container well">
-		<div class="row">
-			<div class="col-md-4">
-				<h4><%= user.classesInProgress[i]._name %></h4>
-			</div> <!--- .col ---!>
-			<div class="col-md-3 pull-right">
-				<h4 class="text-right"><%= user.classesInProgress[i]._subject %> <%=user.classesInProgress[i]._courseNumber %></h4>
-			</div> <!--- .col ---!>
-		</div> <!--- .row ---!>
-			<%= user.classesInProgress[i]._description %>
-		<div class="row">
-		</div><!-- row --> 
-	</div> <!--- .container ---!>
-	<% } %>
-	<div class="container">
-			<input type="button" class="btn btn-primary pull-right col-md-2" onClick="window.print()" value="Print">
-	</div>
+	<ul class="container">
+		<% for (var i=0; i<user.classesInProgress.length; i++) { %>
+		<li class="row list-group-item col-md-10 col-md-push-1 col-md-pull-1">
+			<div class="row">
+				<div class="col-md-4">
+					<h4><%= user.classesInProgress[i]._name %></h4>
+				</div> <!--- .col ---!>
+				<div class="col-md-3 pull-right">
+					<h4 class="text-right"><%= user.classesInProgress[i]._subject %> <%=user.classesInProgress[i]._courseNumber %></h4>
+				</div> <!--- .col ---!>
+			</div> <!--- .row ---!>
 
-</div>
+			<div class="row">
+				<p class="col-md-10 text-justify col-md-push-1">
+					<%= user.classesInProgress[i]._description %>
+				</p> <!--.col -->
+			</div><!-- row --> 
+		</li> <!-- list-group-item col-md-10 col-md-push-1 col-md-pull-1 -->
+		<% } %>
+
+	</ul> <!-- .container -->
+	<input type="button" class="btn btn-primary pull-right col-md-2 col-md-pull-2" onClick="window.print()" value="Print">
+
 </body>
 
