@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // load all the things we need
 var LocalStrategy = require('passport-local').Strategy;
 var LoginFunc = require("./../public/javascripts/loginFunctions");
@@ -99,3 +99,4 @@ module.exports = function (passport) {
         });
     }));
 };
+//# sourceMappingURL=passport.js.map

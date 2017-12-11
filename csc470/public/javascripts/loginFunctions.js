@@ -1,6 +1,6 @@
 "use strict";
 //setup
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // ===============================
 // EXPORTED VARIABLES ============
 // ===============================
@@ -42,3 +42,4 @@ function isValidPassword(password) {
 }
 exports.isValidPassword = isValidPassword;
 ;
+//# sourceMappingURL=loginFunctions.js.map

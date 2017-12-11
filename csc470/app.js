@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var session = require("express-session");
 var mongoose = require("mongoose");
@@ -12,7 +12,7 @@ var port = process.env.PORT || 3000;
 var configDB = require('./config/database');
 // configuration ===============================================================
 mongoose.connect(configDB.url, {
-    useMongoClient: true
+    useMongoClient: true,
 }); // connect to our database
 require('./config/passport')(passport); // pass passport for configuration
 //app configuration ============================================================
@@ -34,3 +34,4 @@ require('./routes/routes')(app, passport); // load our routes and pass in our ap
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
+//# sourceMappingURL=app.js.map
