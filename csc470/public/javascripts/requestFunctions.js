@@ -37,13 +37,11 @@ function calcClassesNeeded(user) {
     var classesNeeded = [];
     var notNeededClasses = user.classesFinished.concat(user.classesInProgress).concat(user.classesWaitlisted).concat(user.classesSignedUpfor);
     var names = notNeededClasses.map(getName);
-    console.log(names);
     for (var i = 0; i < exports.all_classes.length; i++) {
         if (names.indexOf(exports.all_classes[i]._name) === -1) {
             classesNeeded.push(exports.all_classes[i]);
         }
     }
-    console.log(classesNeeded);
     return classesNeeded;
 }
 exports.calcClassesNeeded = calcClassesNeeded;
@@ -52,6 +50,7 @@ exports.calcClassesNeeded = calcClassesNeeded;
  */
 function untakeClass(user, aClass) {
     var index = user.classesFinished.indexOf(aClass);
+    console.log(aClass);
     if (index !== -1) {
         user.classesFinished.splice(index, 1);
     }

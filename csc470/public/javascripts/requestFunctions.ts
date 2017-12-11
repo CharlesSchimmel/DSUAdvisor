@@ -40,7 +40,6 @@ export function calcClassesNeeded(user){
     var notNeededClasses = user.classesFinished.concat(user.classesInProgress).concat(user.classesWaitlisted).concat(user.classesSignedUpfor);
     var names = notNeededClasses.map(getName);
 
-    console.log(names);
 
     for (var i=0; i<all_classes.length; i++){
 
@@ -50,7 +49,6 @@ export function calcClassesNeeded(user){
         }
     }
 
-    console.log(classesNeeded);
 
     return classesNeeded;
 }
@@ -60,26 +58,24 @@ export function calcClassesNeeded(user){
  */
 export function untakeClass(user, aClass){
     var index = user.classesFinished.indexOf(aClass);
-
+    console.log(aClass);
     if (index !== -1) {
-
         user.classesFinished.splice(index, 1);
     }
-    index = user.classesInProgress.indexOf(aClass);
 
+    index = user.classesInProgress.indexOf(aClass);
     if (index !== -1) {
 
         user.classesInProgress.splice(index, 1);
     }
-    index = user.classesWaitlisted.indexOf(aClass);
 
+    index = user.classesWaitlisted.indexOf(aClass);
     if (index !== -1) {
 
         user.classesWaitlisted.splice(index, 1)
     }
 
     index = user.classesSignedUpfor.indexOf(aClass);
-
     if (index !== -1) {
         user.classesSignedUpfor.splice(index, 1)
     }
