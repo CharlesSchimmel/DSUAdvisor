@@ -15,30 +15,42 @@
 
 		<!-- LOCAL INFORMATION -->
 
-    <div class="text-center">
-      <div class="col-sm-6 well" style="word-wrap: break-word;">
-	            <h1>
-					User Information
-				</h1>
-				<ul class="list-group">
-				  <li class="list-group-item"><strong>id</strong>: <%= user._id %></li>
-				  <li class="list-group-item"><strong>Name</strong>: <%= user.firstName %> <%= user.lastName %></li>
-				  <li class="list-group-item"><strong>Email</strong>: <%= user.email %></li>
-				  <li class="list-group-item"><strong>Password</strong>: <%= user.password %></li>
-				  <a class="list-group-item list-group-item-action list-group-item-warning" href="/changePassword">Change Password</a>
-				</ul>
+    <div class="">
+      <div class="col-sm-4 col-sm-offset-1 well" style="word-wrap: break-word;">
+		<h1>
+			User Info
+		</h1>
+		<ul class="list-group">
+		  <li class="list-group-item ">
+			<strong >id:</strong>
+			<p class="pull-right"><%= user._id %></p>
+		  </li>
+		  <li class="list-group-item"><strong>Name:</strong>
+			<p class="pull-right"><%= user.firstName %> <%= user.lastName %> </p>
+		  </li>
+		  <li class="list-group-item">
+			<strong>Email</strong>:
+			<p class="pull-right"> <%= user.email %> </p>
+		  </li>
+		  <a class="text-center list-group-item list-group-item-action list-group-item-warning" href="/changePassword">Change Password</a>
+		</ul>
 
       </div>
-		</div>
+	</div>
 
-    <div class="text-center">
-      <div class="col-sm-6 well">
+      <div class="col-sm-4 well col-sm-push-2">
           <h1>
-            Program Information
+            Program Info
           </h1>
 		  <ul class="list-group">
-			<p class="list-group-item" ><strong>Major</strong>: <%= user.major %></p>
-			<p class="list-group-item" ><strong>Program Length</strong>: <%= user.progLength %> Years</p>
+			<li class="list-group-item" >
+			  <strong>Major:</strong> 
+			  <p class="pull-right"><%= user.major %></p>
+			</li>
+			<li class="list-group-item" >
+			  <strong>Program Length:</strong>
+			  <p class="pull-right"><%= user.progLength %> Years</p>
+			</li>
 			<a class="bg-primary list-group-item list-group-item-action list-group-item-info" href="/major" ><center>Change Major or Program Length</center></a>
 		  </ul>
 

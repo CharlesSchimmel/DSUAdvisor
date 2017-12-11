@@ -261,15 +261,15 @@
   { "_name" : "College Algebra"
    ,"_courseNumber" : "102"
    ,"_subject" : "MATH"
-   ,"_preRequisites" : []
-   ,"_description" : ""
+   ,"_preRequisites" : ["MATH 095"]
+   ,"_description" : "Equations and inequalities; polynomial functions and graphs, exponents, radicals, binomial theorem, zeros of polynomials; systems of equations; exponential, logarithmic, and inverse functions, applications and graphs. Other topics selected from sequences, series, and complex numbers. "
    ,"_creditHours" : 3
   },
   { "_name" : "Trigonometry"
    ,"_courseNumber" : "120"
    ,"_subject" : "MATH"
    ,"_preRequisites" : ["MATH 102"]
-   ,"_description" : ""
+   ,"_description" : "Topics include: trigonometric functions, equations, and identities; inverse trigonometric functions; exponential and logarithmic functions, and applications of these functions."
    ,"_creditHours" : 3
   }
 ]
