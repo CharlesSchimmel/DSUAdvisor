@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 //setup
 var func = require("./../public/javascripts/requestFunctions");
 var LoginFunc = require("./../public/javascripts/loginFunctions");
@@ -15,13 +15,13 @@ module.exports = function (app, passport) {
         if (req.user) {
             res.render('menu/menu.ejs', {
                 user_isloggedin: req.isAuthenticated(),
-                user: req.user,
+                user: req.user
             });
         }
         else {
             res.render('index.ejs', {
                 user_isloggedin: req.isAuthenticated(),
-                user: req.user,
+                user: req.user
             });
         }
     });
@@ -241,4 +241,3 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/login');
 }
-//# sourceMappingURL=routes.js.map
