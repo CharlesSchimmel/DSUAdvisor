@@ -3,34 +3,33 @@
 <head>
     <% include ../partials/navbar %>
 </head>
-<body>
-<br>
-<br>
-<div class="main">
-	<div class="center addpadding">
-		<h3>Update Major or Program Length</h3>
+<body class="main">
+<div class="container">
+	<div class="row page-header text-center">
+		<h2>Update Major or Program Length</h2>
+		<!-- show any messages that come back with authentication -->
+		<% if (typeof message !== "undefined") { %>
+			<div class="alert alert-danger"><%= message %></div>
+		<% } %>
+	</div>
 		
 
-		<form action="/majorSubmit" method="post">
-      
-      <div class="select_join">
-        <select name="major">
+    <div class="row">
+    <form class="well col-md-3 col-md-push-2" action="/majorSubmit" method="post">
+      <div class="select_join form-group">
+        <select class="form-control" name="major">
           <option value="" disabled="disabled" selected="selected">Major</option>
           <option value="csc">Computer Science</option>
           <option value="ceng">Computer Engineering</option>
         </select>
       </div>
       <br>
-      <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+      <button type="submit" class="pull-right btn btn-warning btn-lg">Submit</button>
     </form>
 
-	<br>
-	<br>
-
-	<form action="/lengthSubmit" method="post">
-      
-      <div class="select_join">
-        <select name="progLength">
+	<form class="well col-md-3 pull-right col-md-pull-2" action="/lengthSubmit" method="post">
+      <div class="select_join form-group">
+        <select class="form-control" name="progLength">
           <option value="" disabled="disabled" selected="selected">Program Length</option>
           <option value="unknown">Unknown</option>
           <option value="1">1 yr</option>
@@ -40,12 +39,12 @@
         </select>
       </div>
       <br>
-      <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+      <button type="submit" class="pull-right btn btn-warning btn-lg">Submit</button>
     </form>
+    </div>
 
 
 
-	</div>
 </div>
 
 </body>

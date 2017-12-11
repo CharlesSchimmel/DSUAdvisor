@@ -3,26 +3,23 @@
 <head>
     <% include ../partials/navbarMenu %>
 </head>
-<body>
-<br>
-<br>
-<div class="main">
-	<div class="center addpadding">
-		<h2>Menu</h2>
-		<h3>Welcome back <%= user.firstName %> <%= user.lastName %>
+<body class="main">
+<div class="container">
+	<div class="row page-header text-center">
+		<h1>Menu</h1>
+		<h3>Welcome back <%= user.firstName %> <%= user.lastName %></h3>
 		<!-- show any messages that come back with authentication -->
 		<% if (typeof message !== "undefined") { %>
 			<div class="alert alert-danger"><%= message %></div>
 		<% } %>
+	</div>
 
-		<h4>
-		<div class="btn-group-vertical">
-			<a type="button" class="btn btn-primary" href="/major">Update Major or Program Length</a>
-			<a type="button" class="btn btn-primary"  href="/classes/current">Change Status of Current Classes</a>
-			<a type="button" class="btn btn-primary"  href="/classes/taken">Classes Left to Take</a>
-			<a type="button" class="btn btn-primary" href="/classes/track">Track Progress</a>
-			<a type="button" class="btn btn-primary"  href="/classes/schedule">Create Schedule</a>
-		</div>
+	<div class="row col-md-6 col-md-offset-3 btn-group-vertical ">
+		<a type="button" class="btn btn-primary" href="/major">Update Major or Program Length</a>
+		<a type="button" class="btn btn-primary"  href="/classes/current">Change Status of Current Classes</a>
+		<a type="button" class="btn btn-primary"  href="/classes/taken">Classes Left to Take</a>
+		<a type="button" class="btn btn-primary" href="/classes/track">Track Progress</a>
+		<a type="button" class="btn btn-primary"  href="/classes/schedule">Create Schedule</a>
 	</div>
 </div>
 
