@@ -228,7 +228,7 @@
    ,"_subject" : "MATH"
    ,"_preRequisites" : []
    ,"_description" : "The study of limits, continuity, derivatives, applications of the derivative, antiderivatives, the definite and indefinite integral, and the fundamental theorem of calculus. "
-   ,"_creditHours" : 3
+   ,"_creditHours" : 4
   },
   { "_name" : "Intro to Stats"
    ,"_courseNumber" : "281"
