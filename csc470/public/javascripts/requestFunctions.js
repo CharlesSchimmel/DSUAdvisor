@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 //setup
 var fs = require('fs');
 // ===============================
@@ -72,4 +72,3 @@ function untakeClass(user, aClass) {
     });
 }
 exports.untakeClass = untakeClass;
-//# sourceMappingURL=requestFunctions.js.map
