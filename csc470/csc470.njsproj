@@ -34,7 +34,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="old_app.txt" />
     <Content Include="public\images\dropdown.png" />
     <Content Include="public\json\cs_courses.json">
       <SubType>Code</SubType>
@@ -47,6 +46,7 @@
     <Content Include="public\stylesheets\node-loginStyle.styl" />
     <Content Include="public\stylesheets\signup.css" />
     <Content Include="public\stylesheets\track.css" />
+    <Content Include="views\account\signup2.ejs" />
     <Content Include="views\classes\current.ejs" />
     <Content Include="views\classes\schedule.ejs" />
     <Content Include="views\classes\taken.ejs" />
@@ -59,6 +59,7 @@
     <Content Include="views\menu\major.ejs" />
     <Content Include="views\menu\menu.ejs" />
     <Content Include="views\menu\status.ejs" />
+    <Content Include="views\partials\navbarMenu.ejs" />
     <Content Include="views\partials\navbar.ejs" />
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="config\database.ts">

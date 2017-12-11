@@ -28,12 +28,12 @@ module.exports = function (passport) {
         // by default, local strategy uses username and password, we will override with email
         usernameField: 'email',
         passwordField: 'password',
-        firstNameField: 'firstName',
-        lastNameField: 'lastName',
-        majorField: 'major',
-        progLengthField: 'progLength',
+        //firstNameField: 'firstName',
+        //lastNameField:'lastName',
+        //majorField: 'major',
+        //progLengthField: 'progLength',
         passReqToCallback: true // allows us to pass back the entire request to the callback
-    }, function (req, email, password, done, firstName, lastName, major, progLength) {
+    }, function (req, email, password, done) {
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'email': email }, function (err, user) {
@@ -51,10 +51,10 @@ module.exports = function (passport) {
                 // set the user's local credentials
                 newUser.email = email;
                 newUser.password = newUser.generateHash(password); // use the generateHash function in our user model
-                newUser.firstName = firstName;
-                newUser.lastName = lastName;
-                newUser.major = major;
-                newUser.progLength = progLength;
+                //newUser.firstName = firstName;
+                //newUser.lastName = lastName;
+                //newUser.major = major;
+                //newUser.progLength = <Number>progLength;
                 // save the user
                 newUser.save(function (err) {
                     if (err)

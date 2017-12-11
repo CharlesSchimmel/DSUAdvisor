@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 //setup
 var func = require("./../public/javascripts/requestFunctions");
 //module
@@ -12,10 +12,16 @@ module.exports = function (app, passport) {
     // =====================================
     app.get('/', function (req, res) {
         if (req.user) {
-            res.redirect('/menu');
+            res.render('menu/menu.ejs', {
+                user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+            });
         }
         else {
-            res.render('index.ejs', { user_isloggedin: req.isAuthenticated() }); // load the index.ejs file
+            res.render('index.ejs', {
+                user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+            });
         }
     });
     // =====================================
@@ -165,10 +171,35 @@ module.exports = function (app, passport) {
     });
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/profile',
+        successRedirect: '/signup2',
         failureRedirect: '/signup',
-        failureFlash: true // allow flash messages
+        failureFlash: true
     }));
+    app.get('/signup2', function (req, res) {
+        // render the page and pass in any flash data if it exists
+        res.render('account/signup2.ejs', {
+            message: req.flash('signupMessage'),
+            user_isloggedin: req.isAuthenticated()
+        });
+    });
+    app.post('/signup2', function (req, res) {
+        if (req.user.firstName != '' && req.user.lastName != '' && req.user.major != '' && req.user.progLength != '') {
+            req.user.firstName = req.body.firstName;
+            req.user.lastName = req.body.lastName;
+            req.user.major = req.body.major;
+            req.user.progLength = req.body.progLength;
+            req.user.save(function (err) {
+                if (err)
+                    console.log('Accout update failed');
+                return;
+            });
+            res.redirect('/profile');
+        }
+        else {
+            res.redirect('/signup2');
+            req.flash('signupMessage', 'Sorry you\'re missing some information');
+        }
+    });
     // =====================================
     // PROFILE SECTION =====================
     // =====================================
@@ -202,3 +233,4 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/login');
 }
+//# sourceMappingURL=routes.js.map
