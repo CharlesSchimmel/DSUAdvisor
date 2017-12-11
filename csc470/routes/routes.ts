@@ -1,5 +1,6 @@
 ﻿//setup
 import func = require('./../public/javascripts/requestFunctions');
+import LoginFunc = require('./../public/javascripts/loginFunctions');
 
 //module
 module.exports = function (app, passport) {
@@ -262,6 +263,34 @@ module.exports = function (app, passport) {
             user: req.user, // get the user out of session and pass to template
             user_isloggedin: req.isAuthenticated()
         });
+    });
+
+    app.get('/changePassword', function (req, res) {
+        res.render('account/changePassword.ejs',
+            {
+                user_isloggedin: req.isAuthenticated(),
+                user: req.user,
+                title: "Change Major"
+            }
+        );
+    });
+
+    app.post('/changePassword', function (req, res) {
+        if (LoginFunc.isValidPassword(req.body.password)) {
+            req.user.password = req.body.password;
+            req.user.save(function (err) {
+                if (err)
+                    console.log('Accout update failed');
+                return
+            });
+            //could add flash message here
+            req.flash('Success!');
+            res.redirect('/profile');
+        } else {
+            console.log(LoginFunc.invalidPasswordMessage);
+            req.flash(LoginFunc.invalidPasswordMessage);
+            res.redirect('/chagePassword');
+        }
     });
 
     // =====================================

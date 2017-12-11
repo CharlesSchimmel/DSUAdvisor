@@ -1,7 +1,8 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 //setup
 var func = require("./../public/javascripts/requestFunctions");
+var LoginFunc = require("./../public/javascripts/loginFunctions");
 //module
 module.exports = function (app, passport) {
     // ===================================================================================================================
@@ -14,13 +15,13 @@ module.exports = function (app, passport) {
         if (req.user) {
             res.render('menu/menu.ejs', {
                 user_isloggedin: req.isAuthenticated(),
-                user: req.user
+                user: req.user,
             });
         }
         else {
             res.render('index.ejs', {
                 user_isloggedin: req.isAuthenticated(),
-                user: req.user
+                user: req.user,
             });
         }
     });
@@ -217,6 +218,31 @@ module.exports = function (app, passport) {
             user_isloggedin: req.isAuthenticated()
         });
     });
+    app.get('/changePassword', function (req, res) {
+        res.render('account/changePassword.ejs', {
+            user_isloggedin: req.isAuthenticated(),
+            user: req.user,
+            title: "Change Major"
+        });
+    });
+    app.post('/changePassword', function (req, res) {
+        if (LoginFunc.isValidPassword(req.body.password)) {
+            req.user.password = req.body.password;
+            req.user.save(function (err) {
+                if (err)
+                    console.log('Accout update failed');
+                return;
+            });
+            //could add flash message here
+            req.flash('Success!');
+            res.redirect('/profile');
+        }
+        else {
+            console.log(LoginFunc.invalidPasswordMessage);
+            req.flash(LoginFunc.invalidPasswordMessage);
+            res.redirect('/chagePassword');
+        }
+    });
     // =====================================
     // LOGOUT ==============================
     // =====================================
@@ -239,3 +265,4 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/login');
 }
+//# sourceMappingURL=routes.js.map
