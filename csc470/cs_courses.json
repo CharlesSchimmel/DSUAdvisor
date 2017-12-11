@@ -16,7 +16,7 @@
   { "_name" : "Computer Science II"
    ,"_courseNumber" : "250"
    ,"_subject" : "CSC"
-   ,"_preRequisites" : ["CSC 250"]
+   ,"_preRequisites" : ["CSC 150"]
    ,"_description" : "Problem solving, algorithm design, standards of program style, debugging and testing. Extension of the control structures and data structures of the high-level language introduced in CSC 150. Elementary data structures and basic algorithms that include sorting and searching. Topics include more advanced treatment of functions, data types such as arrays and structures, and files."
    ,"_creditHours" : 3
   },
