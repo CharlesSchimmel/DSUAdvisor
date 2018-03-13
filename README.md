@@ -1,4 +1,4 @@
-#DSU Advisor
+# DSU Advisor
 
 For my Software Engineering course, fall term 2017, I worked with a group to enhance and compliment Dakota State University's "WebAdvisor" application. As any DSU student will tell you, the application can be a bit cumbersome and hard to track the status of all your classes; what you've taken, registered, waitlisted, etc.
 
@@ -8,11 +8,11 @@ Some of my contributions include: class and database schema, hosting, backend ro
 
 ## Screenshots
 
-![scrot](screenshots/classes_needed.png)
-![scrot](screenshots/class_statuses.png)
 ![scrot](screenshots/home.png)
+![scrot](screenshots/signup.png)
 ![scrot](screenshots/login.png)
 ![scrot](screenshots/menu.png)
+![scrot](screenshots/classes_needed.png)
+![scrot](screenshots/class_statuses.png)
 ![scrot](screenshots/progress.png)
 ![scrot](screenshots/schedule.png)
-![scrot](screenshots/signup.png)
